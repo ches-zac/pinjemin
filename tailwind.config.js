@@ -1,23 +1,25 @@
 /** @type {import('tailwindcss').Config} */
-
-export const content = [
-    './resources/**/*.blade.php',
-    './resources/**/*.js',
-    './resources/**/*.vue',
-];
-export const theme = {
+export default {
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+  ],
+  theme: {
     extend: {},
-};
-export const plugins = [];
-
-
+  },
+  plugins: [],
+}
 
 // /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: [],
-//   theme: {
+
+// export const content = [
+//     './resources/**/*.blade.php',
+//     './resources/**/*.js',
+//     './resources/**/*.vue',
+// ];
+// export const theme = {
 //     extend: {},
-//   },
-//   plugins: [],
-// }
+// };
+// export const plugins = [];
 
