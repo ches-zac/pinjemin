@@ -10,6 +10,8 @@
 </head>
 <body>
     Mau pinjem? Pinjemin dulu
+    <button>login</button>
+    <button>regis</button>
     @livewireScripts
 </body>
 </html>
