@@ -14,5 +14,7 @@ class Lending extends Model
         'lending_id',
         'user_id',
         'inventory_id',
+        'tanggal_peminjaman',
+        'tanggal_pengembalian',
     ];
 }
