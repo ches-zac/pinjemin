@@ -11,9 +11,10 @@ class Lending extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'lending_id',
         'user_id',
         'inventory_id',
+        'ruangan',
+        'jam',
         'tanggal_peminjaman',
         'tanggal_pengembalian',
     ];
