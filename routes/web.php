@@ -21,3 +21,6 @@ Route::middleware('guest')->group(function(){
         });
     });
 });
+Route::get('/login', function () {
+    return view('user.login');
+});
