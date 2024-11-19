@@ -1,29 +1,21 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-    "node_modules/preline/dist/*.js",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('preline/plugin'),
-  ],
-}
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+    ],
 
-// /** @type {import('tailwindcss').Config} */
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+        },
+    },
 
-// export const content = [
-//     './resources/**/*.blade.php',
-//     './resources/**/*.js',
-//     './resources/**/*.vue',
-// ];
-// export const theme = {
-//     extend: {},
-// };
-// export const plugins = [];
-
+    plugins: [forms],
+};

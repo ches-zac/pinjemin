@@ -1,26 +1,20 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Auth routes (dari file auth.php)
+require __DIR__.'/auth.php';
 
-Route::middleware('auth')->group(function(){
-    Route::get('/', function(){
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Protected Routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Admin Routes
+    Volt::route('admin/dashboard', 'pages.admin.dashboard')
+        ->middleware('role:admin')
+        ->name('admin.dashboard');
 
-Route::middleware('guest')->group(function(){
-    Route::controller(AuthController::class)->group(function(){
-        Route::name('auth.')->group(function(){
-            Route::get('/login', 'login')->name('login');
-            Route::get('/register', 'register')->name('register');
-        });
-    });
-});
-Route::get('/login', function () {
-    return view('user.login');
+    // User Routes
+    Volt::route('dashboard', 'pages.user.dashboard')
+        ->middleware('role:user')
+        ->name('dashboard');
 });
