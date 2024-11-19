@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-// Auth routes (dari file auth.php)
+// Auth routes (dari file auth.php, tidak perlu diubah)
 require __DIR__.'/auth.php';
 
 // Protected Routes
