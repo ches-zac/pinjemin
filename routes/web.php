@@ -1,20 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
+use App\Http\Controllers\Auth\AuthController;
 
-// Auth routes (dari file auth.php, tidak perlu diubah)
-require __DIR__.'/auth.php';
+// Auth Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'registerForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
 
-// Protected Routes
-Route::middleware(['auth', 'verified'])->group(function () {
-    // Admin Routes
-    Volt::route('admin/dashboard', 'pages.admin.dashboard')
-        ->middleware('role:admin')
-        ->name('admin.dashboard');
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // User Routes
-    Volt::route('dashboard', 'pages.user.dashboard')
-        ->middleware('role:user')
-        ->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard')->middleware('role:user');
+
+    // Admin Routes
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard')->middleware('role:admin');
 });
+
