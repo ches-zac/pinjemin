@@ -6,7 +6,7 @@
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="nama" :value="old('nama')" required autofocus />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-error :messages="$errors->get('nama')" class="mt-2" />
         </div>
 
         <!-- Email -->
