@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
 
 Route::middleware('guest')->group(function () {
@@ -30,6 +31,14 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit'); // Form edit
             Route::put('/edit/{category}', [CategoryController::class, 'update'])->name('admin.categories.update'); // Proses edit
             Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.delete'); // Proses hapus
+        });
+        Route::prefix('/admin/inventory')->group(function () {
+            Route::get('/', [InventoryController::class, 'showInventory'])->name('admin.inventory.index'); // List kategori
+            Route::get('/add', [InventoryController::class, 'addInventory'])->name('admin.inventory.add'); // Form tambah
+            Route::post('/add', [InventoryController::class, 'storeInventory'])->name('admin.inventory.store'); // Proses tambah
+            Route::get('/edit/{inventory}', [InventoryController::class, 'editInventory'])->name('admin.inventory.edit'); // Form edit
+            Route::put('/edit/{inventory}', [InventoryController::class, 'updateInventory'])->name('admin.inventory.update'); // Proses edit
+            Route::delete('/delete/{inventory}', [InventoryController::class, 'destroyInventory'])->name('admin.inventory.delete'); // Proses hapus
         });
     });
 });
