@@ -16,6 +16,7 @@ class InventoryController extends Controller
     {
         // Menghitung jumlah barang yang dipinjam
         $data = Inventory::count('kuota')->get();
+        //kayaknya ini mending dihubungin sama method pinjem deh. soalnya kalo langsung count dari model lending kan jadinya udah harus kirim form pinjem dulu
         $dipinjam = Lending::count();
         if ($dipinjam < $data) {return 'Tersedia';} else {return 'Tidak Tersedia';};
     }

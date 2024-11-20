@@ -1,29 +1,30 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-    "node_modules/preline/dist/*.js",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('preline/plugin'),
-  ],
-}
+const defaultTheme = require('tailwindcss/defaultTheme');
+const forms = require('@tailwindcss/forms');
 
-// /** @type {import('tailwindcss').Config} */
-
-// export const content = [
-//     './resources/**/*.blade.php',
-//     './resources/**/*.js',
-//     './resources/**/*.vue',
-// ];
-// export const theme = {
-//     extend: {},
-// };
-// export const plugins = [];
-
+module.exports = {
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.js', // Jika Anda menggunakan file JS
+        './resources/css/**/*.css',         // Pastikan termasuk CSS Anda
+    ],
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+            keyframes: {
+                hologram: {
+                    '0%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                    '100%': { backgroundPosition: '0% 50%' },
+                },
+            },
+            animation: {
+                hologram: 'hologram 6s ease infinite',
+            },
+        },
+    },
+    plugins: [forms],
+};
