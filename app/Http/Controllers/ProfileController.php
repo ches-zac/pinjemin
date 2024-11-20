@@ -15,7 +15,7 @@ class ProfileController extends Controller
     {
         /** @var \App\Models\User $user */
         return view('profile.show', [
-            'user' => auth()->user()
+            'user' => Auth::user()
         ]);
     }
 
@@ -24,7 +24,7 @@ class ProfileController extends Controller
     {
         /** @var \App\Models\User $user */
         return view('profile.edit', [
-            'user' => auth()->user()
+            'user' => Auth::user()
         ]);
     }
 
@@ -32,7 +32,7 @@ class ProfileController extends Controller
     {
         try {
             /** @var \App\Models\User $user */
-            $user = auth()->user();
+            $user = Auth::user();
             if (!$user) {
                 return redirect()->back()->with('error', 'User tidak ditemukan');
             }
@@ -70,15 +70,21 @@ class ProfileController extends Controller
 
     public function updatePassword(Request $request)
     {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
         $validated = $request->validate([
             'current_password' => ['required', 'current_password'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        /** @var \App\Models\User $user */
-        Auth::user()->update([
-            'password' => Hash::make($validated['password'])
-        ]);
+        $updated = $user->update($validated);
+
+        if (!$updated) {
+            return redirect()->back()->with('error', 'Gagal memperbarui password');
+        }
+
+        return redirect()->route('profile.show')
+            ->with('success', 'Password berhasil diperbarui');
 
         return back()->with('success', 'Password berhasil diperbarui');
     }

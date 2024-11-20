@@ -14,6 +14,7 @@
     <div class="flex-1 bg-white p-16">
         <h2 class="text-2xl font-bold mb-4">Masuk</h2>
         <form method="POST" action="{{ route('login') }}">
+            @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                     Email

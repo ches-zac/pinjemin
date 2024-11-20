@@ -60,11 +60,20 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = User::create([
-            'nama' => $validated['nama'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
+        // Daftar email yang akan jadi admin
+        $adminEmails = [
+            'admin@example.com',
+            'zappchls1214@gmail.com'
+        ];
+
+        //menambahkan user baru ke database
+        $user = new User();
+        $user->nama = $validated['nama'];
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
+        // Set role berdasarkan email
+        $user->role = in_array($validated['email'], $adminEmails) ? 'admin' : 'user';
+        $user->save();
 
         Auth::login($user);
 
