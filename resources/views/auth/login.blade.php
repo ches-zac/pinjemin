@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pinjemin - Login</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Link CDN untuk FontAwesome -->
-  <!-- Link CDN untuk pustaka ikon Flaticon -->
-  <link href="https://cdn.jsdelivr.net/npm/@flaticon/font@4.3.1/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-=======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Login</title>
@@ -28,7 +17,7 @@
 </head>
 
 <body class="flex h-screen">
-    <div class="flex-1 bg-blue-500 text-white p-16 text-center mt-3">
+    <div class="flex-1 bg-blue-500 text-white p-16 text-center">
         <h1 class="text-4xl font-bold">PINJEMIN</h1>
         <p class="mt-4">Platform pinjaman online terpercaya</p>
     </div>
@@ -52,7 +41,6 @@
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                     Masuk
                 </button>
->>>>>>> 4b78c207ddc226c3469d89f0ed95198d495e8cdb
 
 
 </head>
@@ -111,11 +99,7 @@
         passwordInput.type = 'password';
         eyeClosed.classList.remove('hidden'); // Tampilkan ikon mata tertutup
         eyeOpen.classList.add('hidden'); // Sembunyikan ikon mata terbuka
-      }
-
-      document.getElementById("signButton").addEventListener("click", function() {
-        window.location.href = "{{ route('sign') }}";  // Ganti dengan URL halaman signup
-    });
+      };
 
     }
   </script>
