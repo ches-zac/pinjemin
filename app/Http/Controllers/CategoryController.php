@@ -13,6 +13,7 @@ class CategoryController extends Controller
         return view('category.show', compact('itemCategory'));
     }
 
+    
     // Menampilkan form untuk menambah kategori
     public function add()
     {
