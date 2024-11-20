@@ -32,7 +32,7 @@
     <div class="w-1/2 p-8 flex flex-col justify-center">
       <h2 class="text-2xl font-bold mb-9 text-gray-700 justify-center">Login</h2>
       <!-- Login Form -->
-      <form class="space-y-4">
+      <form class="space-y-4" method="POST" action="{{ route('login') }}">
         <!-- Username -->
         <div class="flex items-center border rounded-lg p-2">
             <input type="text" placeholder="Username" class="mr-2 w-full border-none focus:ring-0" mr-2>
@@ -83,10 +83,13 @@
 
 
          <!-- SignUP Button -->
-         <button id="signButton" href="sign.blade.php" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 font-semibold">
+        <div>
+         <a href="{{ route('regisForm') }}">
+         <button id="signButton" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 font-semibold">
             SignUp
           </button>
-
+        </a>
+        </div>
       </form>
     </div>
   </div>
