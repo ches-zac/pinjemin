@@ -8,6 +8,7 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.js', // Jika Anda menggunakan file JS
         './resources/css/**/*.css',         // Pastikan termasuk CSS Anda
+        'node_modules/preline/dist/*.js',
     ],
     theme: {
         extend: {
@@ -26,5 +27,9 @@ module.exports = {
             },
         },
     },
-    plugins: [forms],
+    plugins: [
+        // require('@tailwindcss/forms'),
+      require('preline/plugin'),
+      forms
+    ]
 };

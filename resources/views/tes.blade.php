@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Sidebar</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
@@ -44,31 +45,31 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto md:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21v-8m0 0l-6-6m6 6l6-6" />
                     </svg>
-                    <span class="hidden md:inline-block">Home</span>
+                    <span class="hidden">Home</span>
                 </a>
                 <a href="#" class="text-black flex items-center gap-4 p-2 hover:bg-teal-400 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto md:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.938 13.938 0 0112 15m0 0a13.94 13.94 0 016.879 2.804M12 15v-3m0-3v3m0-3V9m0 6a9 9 0 100-12 9 9 0 000 12z" />
                     </svg>
-                    <span class="hidden md:inline-block">Profile</span>
+                    <span class="hidden">Profile</span>
                 </a>
                 <a href="#" class="text-black flex items-center gap-4 p-2 hover:bg-teal-400 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto md:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13m-7 0V3m0 0h3m-3 3h-3m7 0a3 3 0 01-3-3h0a3 3 0 00-3 3h0a3 3 0 01-3 3h0m3-3h0" />
                     </svg>
-                    <span class="hidden md:inline-block">Documents</span>
+                    <span class="hidden">Documents</span>
                 </a>
                 <a href="#" class="text-black flex items-center gap-4 p-2 hover:bg-teal-400 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto md:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16m-2 4h.01" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16m-2 4h.01"/>
                     </svg>
-                    <span class="hidden md:inline-block">Status</span>
+                    <span class="hidden">Status</span>
                 </a>
                 <a href="#" class="text-black flex items-center gap-4 p-2 hover:bg-teal-400 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto md:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-4h6v4m-6 0h6m-6 0a2 2 0 002 2h2a2 2 0 002-2m-6 0h6" />
                     </svg>
-                    <span class="hidden md:inline-block">Help</span>
+                    <span class="hidden">Help</span>
                 </a>
             </nav>
         </div>
