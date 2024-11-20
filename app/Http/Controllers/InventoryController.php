@@ -4,27 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use App\Models\Lending;
-use App\Models\User;
 use Illuminate\Http\Request;
-
-use function PHPUnit\Framework\isEmpty;
 
 class InventoryController extends Controller
 {
     // Menampilkan ketersediaan barang
-    public function tersedia()
+    public function cekKetersediaan($inventoryId)
     {
-        // Menghitung jumlah barang yang dipinjam
-        $data = Inventory::count('kuota')->get();
-        //kayaknya ini mending dihubungin sama method pinjem deh. soalnya kalo langsung count dari model lending kan jadinya udah harus kirim form pinjem dulu
-        $dipinjam = Lending::count();
-        if ($dipinjam < $data) {return 'Tersedia';} else {return 'Tidak Tersedia';};
+        $inventory = Inventory::findOrFail($inventoryId);
+
+        if ($inventory->kuota > 0) {
+            return response()->json([
+                'status' => 'Tersedia',
+                'sisa_stok' => $inventory->kuota,
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'Tidak Tersedia',
+            'sisa_stok' => 0,
+        ]);
     }
+
 
     // Menampilkan semua barang
     public function showInventory()
     {
-        $data = Inventory::all();
+        $data = Inventory::all(); // Ambil semua data inventory
         return view('admin.inventory.show', compact('data'));
     }
 
@@ -38,12 +44,18 @@ class InventoryController extends Controller
     public function storeInventory(Request $request)
     {
         $validated = $request->validate([
-            'kuota' => 'required|numeric',
-        ],[
+            'kuota' => 'required|numeric|min:1',
+            'nama_barang' => 'required|string|max:255',
+            'category_id' => 'required|numeric|exists:categories,id',
+        ], [
             'kuota.required' => 'Kuota wajib diisi.',
             'kuota.numeric' => 'Kuota harus berupa angka.',
+            'kuota.min' => 'Kuota minimal harus 1.',
+            'nama_barang.required' => 'Nama barang wajib diisi.',
+            'category_id.required' => 'Nama barang wajib diisi.',
         ]);
-        Inventory::create($validated);
+
+        Inventory::create($validated); // Tambahkan data baru
         return redirect()->route('admin.inventory.show')->with('success', 'Barang berhasil ditambahkan.');
     }
 
@@ -57,19 +69,25 @@ class InventoryController extends Controller
     public function updateInventory(Request $request, Inventory $inventory)
     {
         $validated = $request->validate([
-            'kuota' => 'required|numeric',
-        ],[
+            'kuota' => 'required|numeric|min:1',
+            'nama_barang' => 'required|string|max:255',
+            'category_id' => 'required|numeric|exists:categories,id',
+        ], [
             'kuota.required' => 'Kuota wajib diisi.',
             'kuota.numeric' => 'Kuota harus berupa angka.',
+            'kuota.min' => 'Kuota minimal harus 1.',
+            'nama_barang.required' => 'Nama barang wajib diisi.',
+            'category_id.required' => 'Nama barang wajib diisi.',
         ]);
-        $inventory->update($validated);
+
+        $inventory->update($validated); // Perbarui data
         return redirect()->route('admin.inventory.show')->with('success', 'Barang berhasil diperbarui.');
     }
 
     // Menghapus barang
     public function destroyInventory(Inventory $inventory)
     {
-        $inventory->delete();
+        $inventory->delete(); // Hapus data
         return redirect()->route('admin.inventory.show')->with('success', 'Barang berhasil dihapus.');
     }
 }
