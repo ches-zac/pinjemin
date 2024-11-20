@@ -78,8 +78,8 @@
 
         <!-- Content -->
         <div class="bg-gray-100 min-h-screen w-full flex items-center justify-center">
-            <div class="bg-white p-8 rounded  shadow-md">
-                <h1 class="text-6xl font-bold text-blue-500 bg-blue-100 p-2 rounded mb-4">Nama Peminjam</h1>
+            <div class="bg-white p-8 rounded shadow-md">
+                <h1 class="text-6xl font-bold text-blue-500 bg-blue-100 p-2 rounded mb-4"><span id="nama-peminjaman"></span></h1>
                 <div class="mb-6">
                     <label for="ruangan" class="text-6xl block text-sm font-medium text-gray-700">Ruangan</label>
                     <div class="relative">
@@ -177,6 +177,10 @@
                 sidebar.classList.add("w-16");
             }
         }
+
+        // Misalnya Anda mendapatkan nama peminjaman dari localStorage atau API
+        const namaPeminjaman = "John Doe"; // Ganti ini dengan data yang Anda ambil dari halaman lain
+        document.getElementById('nama-peminjaman').innerText = namaPeminjaman;
 
       </script>
 
