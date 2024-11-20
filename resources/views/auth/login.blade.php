@@ -55,9 +55,10 @@
                 <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 font-semibold">Login</button>
                 <!-- SignUP Button -->
                 <div>
-                    <a href="{{ route('regisForm') }}">
-                        <button id="signButton" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 font-semibold">SignUp</button>
+                    <a href="{{ route('regisForm') }}" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 font-semibold text-center block">
+                        SignUp
                     </a>
+
                 </div>
             </form>
         </div>
