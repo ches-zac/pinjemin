@@ -43,9 +43,19 @@ class InventoryController extends Controller
     }
 
     // Kembalikan
-    public function kembalikan()
+    public function kembalikan($id)
     {
+        // Mengambil data dari tabel Inventory
+        $inventory = Inventory::find($id);
+        // Memeriksa ketersediaan barang
+        if (!$inventory) {
+            throw new \Exception('Barang tidak ditemukan');
+        }
+        // Update status barang
+        $inventory->status = 'tersedia';
+        $inventory->save();
 
+        return redirect()->route('')->with('success', 'Barang berhasil dikembalikan');
     }
 
     // Pengembalian
