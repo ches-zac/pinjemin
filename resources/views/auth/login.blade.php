@@ -17,7 +17,7 @@
 </head>
 
 <body class="flex h-screen">
-    <div class="flex-1 bg-blue-500 text-white p-16 text-center">
+    <div class="flex-1 bg-blue-500 text-white p-16 text-center mt-3">
         <h1 class="text-4xl font-bold">PINJEMIN</h1>
         <p class="mt-4">Platform pinjaman online terpercaya</p>
     </div>
