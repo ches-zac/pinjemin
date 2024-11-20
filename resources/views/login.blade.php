@@ -14,7 +14,7 @@
 
 </head>
 <body class="h-screen bg-gray-100 flex items-center justify-center">
-  <div class="w-full max-w-3x1 flex shadow-lg bg-white rounded-lg overflow-hidden">
+  <div class="w-full max-w-[800px] mx-auto flex shadow-lg bg-white rounded-lg overflow-hidden">
     <!-- Left Section -->
     <div class="w-1/2 relative">
       <!-- Background image -->
@@ -22,7 +22,7 @@
       <!-- Overlay -->
 
       <!-- Logo and Text -->
-      <div class="relative h-full flex flex-col items-center justify-center text-white p-6">
+      <div class="relative h-full flex flex-col items-center justify-center text-black p-6">
         <h1 class="text-4xl font-bold">Pinjemin</h1>
         <p class="mt-2 text-lg">Sistem peminjaman yang cepat dan mudah.</p>
       </div>
@@ -68,6 +68,11 @@
         eyeClosed.classList.remove('hidden'); // Tampilkan ikon mata tertutup
         eyeOpen.classList.add('hidden'); // Sembunyikan ikon mata terbuka
       }
+
+      document.getElementById("signButton").addEventListener("click", function() {
+        window.location.href = "{{ route('sign') }}";  // Ganti dengan URL halaman signup
+    });
+
     }
   </script>
 
@@ -75,6 +80,13 @@
         <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 font-semibold">
           Login
         </button>
+
+
+         <!-- SignUP Button -->
+         <button id="signButton" href="sign.blade.php" type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 font-semibold">
+            SignUp
+          </button>
+
       </form>
     </div>
   </div>

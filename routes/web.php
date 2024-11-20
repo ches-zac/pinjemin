@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 
 // Auth Routes
+
 Route::middleware('guest')->group(function () {
     Route::get('/', [AuthController::class, 'loginForm'])->name('welcome');
     Route::post('/login', [AuthController::class, 'login'])->name('login');

@@ -6,6 +6,8 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/js/**/*.js', // Jika Anda menggunakan file JS
+        './resources/css/**/*.css',         // Pastikan termasuk CSS Anda
     ],
     theme: {
         extend: {
