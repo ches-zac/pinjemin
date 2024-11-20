@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +11,14 @@
   <link href="https://cdn.jsdelivr.net/npm/@flaticon/font@4.3.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+  @vite(['resource/css/app.css', 'resource/js/app.js'])
 
 </head>
 <body class="h-screen bg-gray-100 flex items-center justify-center">
     <div class="w-full max-w-[800px] mx-auto flex shadow-lg bg-white rounded-lg overflow-hidden">
 
       <div class="w-1/2 p-8 flex flex-col justify-center">
-        <h2 class="text-2xl font-bold mb-9 text-gray-700 justify-center">Login</h2>
+        <h2 class="text-2xl font-bold mb-9 text-gray-700 justify-center">SignUP</h2>
         <form class="space-y-4" method="POST" action="{{ route('register') }}">
             @csrf
           <div class="flex items-center border rounded-lg p-2">
@@ -65,16 +65,7 @@
         <div class="relative h-full flex flex-col items-center justify-center text-black p-6">
           <h1 class="text-4xl font-bold">Pinjemin</h1>
           <p class="mt-2 text-lg">Sistem peminjaman yang cepat dan mudah.</p>
-=======
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="nama" :value="old('nama')" required autofocus />
-            <x-input-error :messages="$errors->get('nama')" class="mt-2" />
->>>>>>> 4b78c207ddc226c3469d89f0ed95198d495e8cdb
+
         </div>
       </div>
     </div>
@@ -106,23 +97,6 @@
     const passwordInput = document.getElementById('password1');
       const eyeClosed1 = document.getElementById('eyeClosed1');
       const eyeOpen1 = document.getElementById('eyeOpen1');
-=======
-        {{-- <!-- Role Dropdown -->
-        <div class="mt-4">
-            <x-input-label for="role" :value="__('Role')" />
-            <select id="role" name="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-            </select>
-            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-        </div> --}}
-
-        <div class="flex items-center justify-end mt-4 px-1">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
->>>>>>> 4b78c207ddc226c3469d89f0ed95198d495e8cdb
-
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         eyeClosed1.classList.add('hidden'); // Sembunyikan ikon mata tertutup
