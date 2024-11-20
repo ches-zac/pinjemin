@@ -12,8 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')" wire:navigate>
+                    <x-nav-link :href="auth()->user()->role === 'admin' ? route('admin.dashboard') : route('dashboard')" :active="auth()->user()->role === 'admin' ? request()->routeIs('admin.dashboard') : request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
