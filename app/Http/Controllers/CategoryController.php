@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+
 
 class CategoryController extends Controller
 {
@@ -10,52 +12,55 @@ class CategoryController extends Controller
     public function show()
     {
         $itemCategory = Category::all();
-        return view('category.show', compact('itemCategory'));
+        return view('admin.category.show', compact('itemCategory'));
     }
+
 
     // Menampilkan form untuk menambah kategori
     public function add()
     {
-        return view('category.add');
+        return view('admin.category.add');
     }
 
     // Menyimpan kategori baru
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|unique:kategori_barangs|max:255',
-            'deskripsi' => 'nullable|string',
+            'nama_kategori' => 'required|string|unique:categories,nama_kategori|max:255',
+        ],[
+            'nama_kategori.required' => 'Nama kategori wajib diisi.',
+            'nama_kategori.unique' => 'Nama kategori sudah ada.',
+            'nama_kategori.max' => 'Nama kategori maksimal 255 karakter.',
         ]);
-
-        KategoriBarang::create($validated);
-
-        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil ditambahkan.');
+        Category::create($validated);
+        return redirect()->route('admin.category.show')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit kategori
-    public function edit(KategoriBarang $kategoriBarang)
+    public function edit(Category $category)
     {
-        return view('kategori.edit', compact('kategoriBarang'));
+        return view('admin.category.edit', compact('category'));
     }
 
     // Memperbarui kategori
-    public function update(Request $request, KategoriBarang $kategoriBarang)
+    public function update(Request $request, Category $category)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|unique:kategori_barangs,nama,' . $kategoriBarang->id . '|max:255',
-            'deskripsi' => 'nullable|string',
+            'nama_kategori' => 'required|string|unique:categories,nama_kategori,' . $category->id . '|max:255',
+        ],[
+            'nama_kategori.required' => 'Nama kategori wajib diisi.',
+            'nama_kategori.unique' => 'Nama kategori sudah ada.',
+            'nama_kategori.max' => 'Nama kategori maksimal 255 karakter.',
         ]);
+        $category->update($validated);
 
-        $kategoriBarang->update($validated);
-
-        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diperbarui.');
+        return redirect()->route('admin.category.show')->with('success', 'Kategori berhasil diperbarui.');
     }
 
     // Menghapus kategori
-    public function destroy(KategoriBarang $kategoriBarang)
+    public function destroy(Category $category)
     {
-        $kategoriBarang->delete();
-
-        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil dihapus.');
+        $category->delete();
+        return redirect()->route('admin.category.show')->with('success', 'Kategori berhasil dihapus.');
     }
 }
