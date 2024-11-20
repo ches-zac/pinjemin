@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 
@@ -22,6 +23,14 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/admin/dashboard', [DashboardController::class, 'goToAdminDashboard'])->name('admin.dashboard');
         Route::get('/admin/users', [ProfileController::class, 'manageUsers'])->name('admin.manage.users');
+        Route::prefix('/admin/categories')->group(function () {
+            Route::get('/', [CategoryController::class, 'show'])->name('admin.categories.index'); // List kategori
+            Route::get('/add', [CategoryController::class, 'add'])->name('admin.categories.add'); // Form tambah
+            Route::post('/add', [CategoryController::class, 'store'])->name('admin.categories.store'); // Proses tambah
+            Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit'); // Form edit
+            Route::put('/edit/{category}', [CategoryController::class, 'update'])->name('admin.categories.update'); // Proses edit
+            Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.delete'); // Proses hapus
+        });
     });
 });
 

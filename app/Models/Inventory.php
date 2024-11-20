@@ -12,4 +12,10 @@ class Inventory extends Model
         'category_id',
         'kuota'
     ];
+
+    // Relasi ke model Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
