@@ -11,32 +11,31 @@
   <link href="https://cdn.jsdelivr.net/npm/@flaticon/font@4.3.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  @vite(['resource/css/app.css', 'resource/js/app.js'])
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 <body class="h-screen bg-gray-100 flex items-center justify-center">
     <div class="w-full max-w-[800px] mx-auto flex shadow-lg bg-white rounded-lg overflow-hidden">
-
       <div class="w-1/2 p-8 flex flex-col justify-center">
         <h2 class="text-2xl font-bold mb-9 text-gray-700 justify-center">SignUP</h2>
         <form class="space-y-4" method="POST" action="{{ route('register') }}">
             @csrf
           <div class="flex items-center border rounded-lg p-2">
-            <input type="text" placeholder="Name" class="mr-2 w-full border-none focus:ring-0" mr-2>
+            <input type="text" placeholder="Name" class="mr-2 w-full border-none focus:ring-0" mr-2 name="nama" required>
             <svg xmlns="http://www.w3.org/200/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 1c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"/>
             </svg>
           </div>
           <div class="flex items-center border rounded-lg p-2">
-            <input type="text" placeholder="Username" class="mr-2 w-full border-none focus:ring-0" mr-2>
+            <input type="text" placeholder="Email" class="mr-2 w-full border-none focus:ring-0 mr-2"  name="email" required>
             <svg xmlns="http://www.w3.org/200/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 1c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"/>
             </svg>
           </div>
           <div class="flex items-center border rounded-lg p-2">
-            <input id="password" type="password" placeholder="Password" class="mr-2 w-full border-none focus:ring-0">
+            <input id="password" type="password" placeholder="Password" class="mr-2 w-full border-none focus:ring-0" name="password" required>
             <svg id="eyeClosed" xmlns="http://www.w3.org/200/svg" class="h-6 w-6 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" onclick="togglePasswordVisibility()">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
             </svg>
@@ -45,7 +44,7 @@
             </svg>
           </div>
           <div class="flex items-center border rounded-lg p-2">
-            <input id="password1" type="password" placeholder="Confirm Password" class="mr-2 w-full border-none focus:ring-0">
+            <input id="password1" type="password" placeholder="Confirm Password" class="mr-2 w-full border-none focus:ring-0" name="password" required>
             <svg id="eyeClosed1" xmlns="http://www.w3.org/200/svg" class="h-6 w-6 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" onclick="togglePasswordVisibility1()">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
             </svg>
@@ -54,9 +53,8 @@
             </svg>
           </div>
           <div>
-          <a href="{{ route('login') }}">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">SignUp</button>
-          </a></div>
+          </div>
         </form>
       </div>
 
@@ -65,7 +63,6 @@
         <div class="relative h-full flex flex-col items-center justify-center text-black p-6">
           <h1 class="text-4xl font-bold">Pinjemin</h1>
           <p class="mt-2 text-lg">Sistem peminjaman yang cepat dan mudah.</p>
-
         </div>
       </div>
     </div>
@@ -85,10 +82,6 @@
         eyeClosed.classList.remove('hidden'); // Tampilkan ikon mata tertutup
         eyeOpen.classList.add('hidden'); // Sembunyikan ikon mata terbuka
       }
-
-      document.getElementById("signButton").addEventListener("click", function() {
-        window.location.href = "{{ route('sign') }}";  // Ganti dengan URL halaman signup
-    });
 
     }
 

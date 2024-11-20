@@ -19,6 +19,7 @@ return new class extends Migration
             $table->time('jam');
             $table->date('tanggal_peminjaman');
             $table->datetime('tanggal_pengembalian');
+            $table->string('status');
             $table->timestamps();
         });
     }

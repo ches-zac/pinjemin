@@ -9,32 +9,34 @@ use Illuminate\Http\Request;
 
 class LendingController extends Controller
 {
-    // Peminjaman
-    public function peminjaman()
-    {
-
-    }
-
-    // Pinjam
+    // fungsi untuk user meminjam barang
     public function pinjam(Request $request)
     {
-        // Cek ketersediaan barang, pls ini gaje maaf wkwkwk
-        if (!$this->tersedia())
-        {
-            return false; // Atau throw exception
+        $validated = $request->validate([
+            'inventory_id' => 'required|exists:inventories,id', // Validasi barang
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $inventory = Inventory::findOrFail($validated['inventory_id']);
+
+        // Cek apakah barang tersedia
+        if ($inventory->kuota < 1) {
+            return redirect()->back()->with('error', 'Barang tidak tersedia.');
         }
 
-        // Buat record peminjaman baru
-        $peminjaman = new Lending();
-        $peminjaman->user_id = User::select('nama')->get();
-        $peminjaman->inventory_id = Inventory::select('inventory_id')->get();
-        $peminjaman->tanggal_peminjaman = $request->tanggal_peminjaman;
-        $peminjaman->tanggal_pengembalian = $request->tanggal_pengembalian;
-        $peminjaman->save();
+        // Kurangi stok barang
+        $inventory->decrement('kuota');
 
-        // return redirect()->route('')->with('success', 'Peminjaman Berhasil')
+        // Simpan data peminjaman
+        Lending::create([
+            'inventory_id' => $validated['inventory_id'],
+            'user_id' => $validated['user_id'],
+            'status' => 'dipinjam', // Status awal
+        ]);
 
+        return redirect()->route('lendings.index')->with('success', 'Barang berhasil dipinjam.');
     }
+
 
     // Kembalikan
     public function kembalikan($id)
