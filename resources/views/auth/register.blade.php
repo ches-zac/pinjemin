@@ -90,29 +90,12 @@
         window.location.href = "{{ route('sign') }}";  // Ganti dengan URL halaman signup
     });
 
-<<<<<<< HEAD
     }
 
     function togglePasswordVisibility1() {
     const passwordInput = document.getElementById('password1');
       const eyeClosed1 = document.getElementById('eyeClosed1');
       const eyeOpen1 = document.getElementById('eyeOpen1');
-=======
-        {{-- <!-- Role Dropdown -->
-        <div class="mt-4">
-            <x-input-label for="role" :value="__('Role')" />
-            <select id="role" name="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-            </select>
-            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-        </div> --}}
-
-        <div class="flex items-center justify-end mt-4 px-1">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
->>>>>>> 4b78c207ddc226c3469d89f0ed95198d495e8cdb
 
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
@@ -127,4 +110,3 @@
     }
 
 </script>
-</x-guest-layout>
