@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -20,7 +19,8 @@ class User extends Authenticatable
         'nama',
         'email',
         'password',
-        'no_telp'
+        'no_telp',
+        'role'
     ];
 
     protected $primarykey = 'user_id';
