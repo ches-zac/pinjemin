@@ -19,7 +19,8 @@ class User extends Authenticatable
         'nama',
         'email',
         'password',
-        'no_telp'
+        'no_telp',
+        'role'
     ];
 
     protected $primarykey = 'user_id';
