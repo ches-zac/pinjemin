@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -14,6 +14,12 @@ class AuthController extends Controller
     public function loginForm()
     {
         return view('auth.login');
+    }
+
+    //helper hasRole
+    protected function hasRole($user, $role)
+    {
+        return $user->role === $role;
     }
 
     // Proses login
@@ -28,7 +34,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             // Redirect berdasarkan role
-            if (Auth::user()->isAdmin()) {
+            if ($this->hasRole(Auth::user(), 'admin')) {
                 return redirect()->route('admin.dashboard');
             }
             return redirect()->route('dashboard');
@@ -49,19 +55,31 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
+        // Daftar email yang akan jadi admin
+        $adminEmails = [
+            'admin@example.com',
+            'zappchls1214@gmail.com'
+        ];
+
+        //menambahkan user baru ke database
+        $user = new User();
+        $user->nama = $validated['nama'];
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
+        // Set role berdasarkan email
+        $user->role = in_array($validated['email'], $adminEmails) ? 'admin' : 'user';
+        $user->save();
 
         Auth::login($user);
 
+        if ($this->hasRole(Auth::user(), 'admin')) {
+            return redirect()->route('admin.dashboard');
+        }
         return redirect()->route('dashboard');
     }
 
@@ -72,6 +90,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect('/');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -20,15 +19,11 @@ class User extends Authenticatable
         'nama',
         'email',
         'password',
-        'no_telp'
+        'no_telp',
+        'role'
     ];
 
     protected $primarykey = 'user_id';
-
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -39,6 +34,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
 
     /**
      * Get the attributes that should be cast.

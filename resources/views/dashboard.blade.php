@@ -8,19 +8,6 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-</head>
-<body class="flex h-screen font-sans">
-    <!-- Sidebar -->
-    <div class="w-36 bg-blue-100 flex flex-col items-center py-6">
-        <div class="mb-8">
-            <img src="home-icon.png" alt="Home" class="w-8 h-8 mb-6">
-            <img src="user-icon.png" alt="User" class="w-8 h-8 mb-6">
-            <img src="document-icon.png" alt="Document" class="w-8 h-8 mb-6">
-            <img src="check-icon.png" alt="Check" class="w-8 h-8 mb-6">
-            <img src="question-icon.png" alt="Help" class="w-8 h-8">
-        </div>
-    </div>
-
     <!-- Main Content -->
     <div class="flex-grow p-6">
         <h1 class="text-2xl font-bold mb-6">DASHBOARD</h1>
