@@ -28,8 +28,8 @@ module.exports = {
         },
     },
     plugins: [
-        // require('@tailwindcss/forms'),
-      require('preline/plugin'),
-      forms
+        require('@tailwindcss/forms'),
+        require('preline/plugin'),
+        forms
     ]
 };
