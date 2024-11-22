@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ruangan');
             $table->time('jam');
             $table->date('tanggal_peminjaman');
-            $table->datetime('tanggal_pengembalian');
+            $table->datetime('tanggal_pengembalian')->nullable();
             $table->string('status');
             $table->timestamps();
         });
