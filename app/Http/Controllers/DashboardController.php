@@ -13,4 +13,8 @@ class DashboardController extends Controller
     public function goToUserDashboard() {
         return view('dashboard');
     }
+
+    public function faq(){
+        return view('faq');
+    }
 }
