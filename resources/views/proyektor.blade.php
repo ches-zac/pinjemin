@@ -31,6 +31,7 @@
         Inventory:PROYEKTOR
     </header>
     <div class="flex h-screen">
+        {{-- nambahin sesuatu biar bisa di commit --}}
         <!-- Sidebar -->
         <div id="sidebar" class="bg-teal-300 w-16 transition-width duration-300 flex flex-col items-center py-6">
             <!-- Toggle Button -->
