@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LendingController;
+use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [AuthController::class, 'loginForm'])->name('login');
@@ -31,11 +32,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/ongoing', [LendingController::class, 'myOnGoingLend'])->name('lending.ongoing');
         Route::post('/{id}/return', [LendingController::class, 'return'])->name('lending.return');
     });
+    Route::get('/faq', [DashboardController::class, 'faq'])->name('faq');
 
 
 
     // Route untuk admin
     Route::prefix('/admin')->middleware('admin')->group(function () {
+        Route::prefix('/users')->group(function () {
+            Route::get('/show', [UserController::class, 'show'])->name('show_users');
+        });
         Route::get('/dashboard', [DashboardController::class, 'goToAdminDashboard'])->name('admin.dashboard');
         Route::prefix('/categories')->group(function () {
             Route::get('/', [CategoryController::class, 'show'])->name('admin.categories.index'); // List kategori
