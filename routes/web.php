@@ -9,8 +9,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LendingController;
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [AuthController::class, 'loginForm'])->name('welcome');
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/', [AuthController::class, 'loginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
     Route::get('/register', [AuthController::class, 'registerForm'])->name('regisForm');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit', [ProfileController::class, 'edit'])->name('edit.profile');
         Route::put('/edit', [ProfileController::class, 'update'])->name('update.profile'); // Proses edit
     });
+    Route::get('inventory/categories', [CategoryController::class, 'show'])->name('item.categories'); // List kategori
     Route::get('/inventory/{id}/check', [InventoryController::class, 'checkAvailability'])->name('inventory.check');
     Route::prefix('/lending')->group(function () {
         Route::get('/lend', [LendingController::class, 'lendform'])->name('lending.form');
@@ -45,7 +46,7 @@ Route::middleware('auth')->group(function () {
             Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.delete'); // Proses hapus
         });
         Route::prefix('/inventory')->group(function () {
-            Route::get('/', [InventoryController::class, 'showInventory'])->name('admin.inventory.index'); // List kategori
+            Route::get('/', [InventoryController::class, 'showInventory'])->name('admin.inventory.index'); // List inventory
             Route::get('/add', [InventoryController::class, 'addInventory'])->name('admin.inventory.add'); // Form tambah
             Route::post('/add', [InventoryController::class, 'storeInventory'])->name('admin.inventory.store'); // Proses tambah
             Route::get('/edit/{inventory}', [InventoryController::class, 'editInventory'])->name('admin.inventory.edit'); // Form edit
@@ -54,8 +55,10 @@ Route::middleware('auth')->group(function () {
         });
         Route::prefix('/lending')->group(function () {
             Route::get('/', [LendingController::class, 'show'])->name('admin.lending.history');
-            Route::put('/lend', [LendingController::class, 'update'])->name('admin.lending.status.edit');
+            Route::put('/edit/status', [LendingController::class, 'update'])->name('admin.lending.status.edit');
             Route::delete('/delete/{lending}', [LendingController::class, 'destroy'])->name('admin.lending.delete'); // Proses hapus
+            Route::get('/download-to-pdf', [LendingController::class, 'exportToPDF'])->name('admin.lending.download.pdf'); // Proses hapus
+            Route::get('/download-to-excel', [LendingController::class, 'exportToExcel'])->name('admin.lending.download.excel'); // Proses hapus
         });
     });
 });

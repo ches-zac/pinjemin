@@ -10,6 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/@flaticon/font@4.3.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  @vite(['resources/js/app.js', 'resources/css/app.css']);
 </head>
 <body class="h-screen bg-gray-100 flex items-center justify-center">
     <div class="w-full max-w-[800px] mx-auto flex shadow-lg bg-white rounded-lg overflow-hidden">

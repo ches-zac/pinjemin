@@ -10,7 +10,8 @@
   <!-- Link CDN untuk pustaka ikon Flaticon -->
   <link href="https://cdn.jsdelivr.net/npm/@flaticon/font@4.3.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  {{-- <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet"> --}}
+
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>

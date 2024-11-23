@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app['router']->aliasMiddleware('role', Admin::class);
+        $this->app['router']->aliasMiddleware('admin', Admin::class);
     }
 }
