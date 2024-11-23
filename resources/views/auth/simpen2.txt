@@ -1,0 +1,14 @@
+<form class="flex flex-col gap-12 mt-32 max-md:mt-10">
+                            <div class="flex flex-col justify-center items-end px-20 py-9 bg-zinc-300 rounded-[100px] max-md:px-5 max-md:max-w-full">
+                                <label for="username" class="sr-only">Username</label>
+                                <input type="text" id="username" name="username" class="w-full bg-transparent" aria-label="Username input" required />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/7cecc02f5dbe6845ecf6f991b816dbfcec617d1f6c1aee57084b4f0ca2777a4a?placeholderIfAbsent=true&apiKey=becec86d27074bbbb6e8786f5daa1839" alt="" class="object-contain aspect-[0.83] w-[62px]" />
+                            </div>
+                            <div class="flex flex-col justify-center items-end px-20 py-9 bg-zinc-300 rounded-[100px] max-md:px-5 max-md:max-w-full">
+                                <label for="password" class="sr-only">Password</label>
+                                <input type="password" id="password" name="password" class="w-full bg-transparent" aria-label="Password input" required />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/839493b344683bb38299e150130f9f443d95e57ce63e54c2ea627f3f6f98b4fb?placeholderIfAbsent=true&apiKey=becec86d27074bbbb6e8786f5daa1839" alt="" class="object-contain aspect-square w-[75px]" />
+                            </div>
+                            <button type="submit" class="px-16 pt-11 pb-16 text-5xl text-black whitespace-nowrap bg-zinc-300 rounded-[100px] max-md:px-5 max-md:max-w-full max-md:text-4xl">
+                                LOGIN
+                            </button>
