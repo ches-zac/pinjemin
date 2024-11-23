@@ -7,6 +7,8 @@ use App\Models\Lending;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\LendingExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LendingController extends Controller
 {
@@ -138,4 +140,11 @@ class LendingController extends Controller
         // Unduh file PDF
         return $pdf->download('data_peminjaman.pdf');
     }
+
+    public function exportToExcel()
+    {
+        return Excel::download(new LendingExport, 'data_peminjaman.xlsx');
+    }
+
+
 }
