@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
+    public function lendings()
+    {
+        return $this->hasMany(Lending::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *

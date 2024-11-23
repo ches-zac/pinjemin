@@ -9,20 +9,20 @@ use Illuminate\Http\Request;
 class InventoryController extends Controller
 {
     // Menampilkan ketersediaan barang
-    public function cekKetersediaan($inventoryId)
+    public function checkAvailability($id)
     {
-        $inventory = Inventory::findOrFail($inventoryId);
+        $inventory = Inventory::findOrFail($id);
 
         if ($inventory->kuota > 0) {
             return response()->json([
                 'status' => 'Tersedia',
-                'sisa_stok' => $inventory->kuota,
+                'sisa_kuota' => $inventory->kuota
             ]);
         }
 
         return response()->json([
             'status' => 'Tidak Tersedia',
-            'sisa_stok' => 0,
+            'sisa_kuota' => 0
         ]);
     }
 
@@ -30,7 +30,7 @@ class InventoryController extends Controller
     // Menampilkan semua barang
     public function showInventory()
     {
-        $data = Inventory::all(); // Ambil semua data inventory
+        $data = Inventory::with('category')->get(); // Ambil semua data inventory
         return view('admin.inventory.show', compact('data'));
     }
 
@@ -52,7 +52,7 @@ class InventoryController extends Controller
             'kuota.numeric' => 'Kuota harus berupa angka.',
             'kuota.min' => 'Kuota minimal harus 1.',
             'nama_barang.required' => 'Nama barang wajib diisi.',
-            'category_id.required' => 'Nama barang wajib diisi.',
+            'category_id.required' => 'Kategori wajib diisi.',
         ]);
 
         Inventory::create($validated); // Tambahkan data baru
@@ -77,7 +77,7 @@ class InventoryController extends Controller
             'kuota.numeric' => 'Kuota harus berupa angka.',
             'kuota.min' => 'Kuota minimal harus 1.',
             'nama_barang.required' => 'Nama barang wajib diisi.',
-            'category_id.required' => 'Nama barang wajib diisi.',
+            'category_id.required' => 'Kategori wajib diisi.',
         ]);
 
         $inventory->update($validated); // Perbarui data

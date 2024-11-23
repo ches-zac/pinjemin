@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -12,9 +12,12 @@ class CategoryController extends Controller
     public function show()
     {
         $itemCategory = Category::all();
-        return view('admin.category.show', compact('itemCategory'));
+        $user = Auth::user()->role;
+        if ($user === 'admin') {
+            return view('admin.category.show', compact('itemCategory'));
+        }
+        return view('item', compact('itemCategory'));
     }
-
 
     // Menampilkan form untuk menambah kategori
     public function add()

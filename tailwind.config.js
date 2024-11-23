@@ -1,3 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+
 const defaultTheme = require('tailwindcss/defaultTheme');
 const forms = require('@tailwindcss/forms');
 
@@ -5,9 +7,9 @@ module.exports = {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-        './resources/js/**/*.js', // Jika Anda menggunakan file JS
-        './resources/css/**/*.css',         // Pastikan termasuk CSS Anda
+        './resources/**/*.blade.php',
+        './resources/**/*.js', // Jika Anda menggunakan file JS
+        './resources/**/*.css',         // Pastikan termasuk CSS Anda
         'node_modules/preline/dist/*.js',
     ],
     theme: {

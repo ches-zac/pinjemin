@@ -79,35 +79,31 @@
 
         <!-- Content -->
         <div class="container mx-auto px-4 py-8">
-            <div class="w-1/2 bg-blue-200 rounded-lg p-4">
-              <div class="flex justify-between items-center">
-                <h2 class="text-2xl font-bold">Proyektor</h2>
-                <span id="kuota" class="text-xs text-gray-500">Kuota: 0</span>
-              </div>
-              <div class="flex items-center">
-                <select id="projectSelect" class="w-full rounded-md border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option 1  value="0">Pilih Proyektor</option>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="bg-blue-100 p-4 rounded-lg">
+                <h2 class="text-lg font-bold">Proyektor</h2>
+                <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
                   <option value="10">Proyektor A (10 kuota)</option>
                   <option value="20">Proyektor B (20 kuota)</option>
                 </select>
+                <div class="mt-2">Kuota: <span id="kuota-proyektor1">10</span></div>
+                <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
               </div>
-            </div>
+              </div>
           </div>
 
           <div class="container mx-auto px-4 py-8">
-            <div class="w-1/2 bg-blue-200 rounded-lg p-4">
-              <div class="flex justify-between items-center">
-                <h2 class="text-2xl font-bold">Speaker</h2>
-                <span id="kuota" class="text-xs text-gray-500">Kuota: 0</span>
-              </div>
-              <div class="flex items-center">
-                <select id="projectSelect" class="w-full rounded-md border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option 1  value="0">Pilih Speaker</option>
-                  <option value="10">Speaker A (10 kuota)</option>
-                  <option value="20">Speaker B (20 kuota)</option>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="bg-blue-100 p-4 rounded-lg">
+                <h2 class="text-lg font-bold">Proyektor</h2>
+                <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
+                  <option value="10">Proyektor A (10 kuota)</option>
+                  <option value="20">Proyektor B (20 kuota)</option>
                 </select>
+                <div class="mt-2">Kuota: <span id="kuota-proyektor1">10</span></div>
+                <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
               </div>
-            </div>
+              </div>
           </div>
 
 
