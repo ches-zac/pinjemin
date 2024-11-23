@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Sidebar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resource/css/app.css', 'resource/js/app.js'])
 
     <style>
@@ -31,6 +30,7 @@
         Inventory:PROYEKTOR
     </header>
     <div class="flex h-screen">
+        {{-- nambahin sesuatu biar bisa di commit --}}
         <!-- Sidebar -->
         <div id="sidebar" class="bg-teal-300 w-16 transition-width duration-300 flex flex-col items-center py-6">
             <!-- Toggle Button -->
