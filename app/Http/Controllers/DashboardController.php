@@ -14,7 +14,8 @@ class DashboardController extends Controller
 
     public function goToUserDashboard() {
 
-        return view('dashboard');
+        $lendings = Lending::orderBy('created_at', 'desc')->take(10)->get();
+        return view('dashborad', compact('lendings'));
     }
 
     public function faq(){

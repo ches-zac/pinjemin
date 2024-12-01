@@ -1,20 +1,40 @@
 import './bootstrap';
 import 'preline';
 
+// Fungsi togel sidebar
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
-    const spanElements = sidebar.querySelectorAll("span.hidden");
+    const navIcons = sidebar.querySelectorAll(".nav-icon");
+    const spanElements = sidebar.querySelectorAll("a span"); //select semua tag span di dlm tag a
 
-    if (sidebar.classList.contains("w-16")) {
+    //cek apa sidebarnya lagi shrinked apa expanded
+    if (sidebar.classList.contains("w-16")) { //kalo shrinked
+        //diexpand
         sidebar.classList.remove("w-16");
         sidebar.classList.add("w-64");
+
+        //nampilin tulisannya
         spanElements.forEach((span) => span.classList.remove("hidden"));
-    } else {
+        // ratain ikon
+        navIcons.forEach((icon) => {
+            icon.classList.remove("mx-auto");
+            icon.classList.add("mx-0");
+        });
+    } else { //kalo ternyata lagi expanded
+        //di shrinked
         sidebar.classList.remove("w-64");
         sidebar.classList.add("w-16");
+
+        //sembunyiin tulisan
         spanElements.forEach((span) => span.classList.add("hidden"));
+        //ratain ikon
+        navIcons.forEach((icon) => {
+            icon.classList.remove("mx-0");
+            icon.classList.add("mx-auto");
+        });
     }
 }
+
 
 function togglePasswordVisibility(passwordInputId, eyeClosedId, eyeOpenId) {
     const passwordInput = document.getElementById(passwordInputId);
@@ -57,7 +77,7 @@ function initializeTogglePassword() {
 }
 
 function initializeToggleSidebar() {
-    const sidebarToggle = document.querySelector('button[onclick="toggleSidebar()"]');
+    const sidebarToggle = document.getElementById('toggleBtn');
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', toggleSidebar);
     }

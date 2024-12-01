@@ -13,12 +13,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="border border-gray-200 py-2 text-center">Data 1</td>
-                    <td class="border border-gray-200 py-2 text-center">Data 2</td>
-                    <td class="border border-gray-200 py-2 text-center">Data 3</td>
-                    <td class="border border-gray-200 py-2 text-center">Data 4</td>
-                </tr>
+                @foreach ($lendings as $lending)
+                    <tr>
+                        <td class="border border-gray-200 py-2 text-center">Data 1</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 2</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 3</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
+                    </tr>
+                @endforeach
                 <tr>
                     <td class="border border-gray-200 py-2 text-center">Data 5</td>
                     <td class="border border-gray-200 py-2 text-center">Data 6</td>
