@@ -54,7 +54,8 @@
             </svg>
           </div>
           <div>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">SignUp</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">SignUp</button>
+            Sudah memiliki akun? silahkan <a href="{{ route('login') }}">Login</a>
           </div>
         </form>
       </div>

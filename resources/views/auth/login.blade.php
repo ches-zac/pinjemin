@@ -35,22 +35,14 @@
                 @csrf
                 <!-- Username -->
                 <div class="flex items-center border rounded-lg p-2">
-<<<<<<< HEAD
-                    <input type="text" placeholder="Username" class="mr-2 w-full border-none" mr-2>
-=======
                     <input type="text" placeholder="Nama" class="mr-2 w-full border-none focus:ring-0" mr-2 name="nama">
->>>>>>> 027965156560e48feda2454ae2278548adfba3ac
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 1c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"/>
                     </svg>
                 </div>
                 <!-- Password -->
                 <div class="flex items-center border rounded-lg p-2">
-<<<<<<< HEAD
-                    <input id="password" type="password" placeholder="Password" class="mr-2 w-full border-none">
-=======
                     <input id="password" type="password" placeholder="Password" class="mr-2 w-full border-none focus:ring-0" name="password">
->>>>>>> 027965156560e48feda2454ae2278548adfba3ac
                     <!-- Mata Tertutup -->
                     <svg id="eyeClosed" xmlns="http://www.w3.org/200/svg" class="h-6 w-6 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" onclick="togglePasswordVisibility1()">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
