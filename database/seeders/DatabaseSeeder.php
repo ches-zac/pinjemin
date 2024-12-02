@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Inventory;
+use App\Models\Lending;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,14 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::create([
-            'nama' => 'rara',
-            'email' => 'rara@mail.co',
-            'password' => Hash::make('adminra'),
-            'no_telp' => '02100998877',
-            'role' => 'admin'
-        ]);
+        User::factory(20)->create();
+        Category::factory(4)->create();
+        Inventory::factory(20)->create();
+        Lending::factory(10)->create();
     }
 }

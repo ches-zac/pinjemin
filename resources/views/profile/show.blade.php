@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <!-- Main Content -->
     <div class="flex-1 bg-gray-100 p-8">
         <h2 class="text-5xl text-center mb-7 font-semibold text-black">Profile</h2>
