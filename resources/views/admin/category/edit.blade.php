@@ -6,33 +6,22 @@
         <div class="p-8 overflow-y-auto">
             <h2 class="text-4xl text-center mb-7 font-semibold text-black">Add Category</h2>
 
-            <form action="{{ route('update.profile') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.categories.update', $category) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-
-                <!-- No -->
-                <div class="mb-6">
-                    <label for="no" class="block mb-2 text-sm font-medium text-black">No</label>
-                    <input type="number" id="no" name="no" value="{{ old('no', $category->no) }}"
-                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    @error('no')
-                        <span class="text-red-500">{{ $message }}</span>
-                    @enderror
-                </div>
-
                 <!-- Nama kategori -->
                 <div class="mb-6">
                     <label for="nama_kategori" class="block mb-2 text-sm font-medium text-black">Nama Kategori</label>
                     <input type="text" id="nama_kategori" name="nama_kategori" value="{{ old('nama_kategori', $category->nama_kategori) }}"
-                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
-                    @error('email')
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-[#dd7c1b]-500 focus:border-[#dd7c1b]-500 block w-full p-2.5">
+                    @error('nama_kategori')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="flex justify-between">
                     <!-- Tombol Kembali -->
-                    <a href="{{ route('show.profile') }}"
+                    <a href="{{ route('admin.categories.show') }}"
                        class="text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-500 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                         Kembali
                     </a>

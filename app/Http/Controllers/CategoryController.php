@@ -10,9 +10,9 @@ class CategoryController extends Controller
     // Menampilkan semua kategori
     public function show()
     {
-        $itemCategory = Category::all();
+        $categories = Category::paginate(5);
         $title = 'Daftar Kategori';
-        return view('admin.category.show', compact('itemCategory', 'title'));
+        return view('admin.category.show', compact('categories', 'title'));
     }
 
     // Menampilkan form untuk menambah kategori
@@ -33,7 +33,7 @@ class CategoryController extends Controller
             'nama_kategori.max' => 'Nama kategori maksimal 255 karakter.',
         ]);
         Category::create($validated);
-        return redirect()->route('admin.category.show')->with('success', 'Kategori berhasil ditambahkan.');
+        return redirect()->route('admin.categories.show')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit kategori
@@ -55,13 +55,13 @@ class CategoryController extends Controller
         ]);
         $category->update($validated);
 
-        return redirect()->route('admin.category.show')->with('success', 'Kategori berhasil diperbarui.');
+        return redirect()->route('admin.categories.show')->with('success', 'Kategori berhasil diperbarui.');
     }
 
     // Menghapus kategori
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('admin.category.show')->with('success', 'Kategori berhasil dihapus.');
+        return redirect()->route('admin.categories.show')->with('success', 'Kategori berhasil dihapus.');
     }
 }
