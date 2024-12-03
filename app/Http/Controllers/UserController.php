@@ -11,4 +11,11 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.users_manage.show', compact('users'));
     }
+
+    public function edit(User $user)
+    {
+        return view('admin.users_manage.show', compact('user'));
+    }
+
 }
+
