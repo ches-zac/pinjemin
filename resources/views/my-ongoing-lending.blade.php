@@ -82,7 +82,7 @@
             <table class="table-auto w-full border border-gray-200">
                 <thead>
                     <tr class="bg-teal-300">
-                        <th class="border border-gray-200 py-2">Nama</th>
+                        <th class="border border-gray-200 py-2">No</th>
                         <th class="border border-gray-200 py-2">Barang</th>
                         <th class="border border-gray-200 py-2">Ruangan</th>
                         <th class="border border-gray-200 py-2">Jam</th>

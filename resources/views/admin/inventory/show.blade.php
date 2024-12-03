@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Sidebar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    @vite(['resource/css/app.css', 'resource/js/app.js'])
+    <!--@vite(['resource/css/app.css', 'resource/js/app.js'])-->
 
     <style>
         @keyframes gradientAnimation {
@@ -111,8 +111,11 @@
                     </tr>
                 </tbody>
             </table>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-                + TAMBAH PENGGUNA
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded mt-4 flex items-center gap-x-2"">
+                Unduh Laporan
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
             </button>
         </div>
     </div>

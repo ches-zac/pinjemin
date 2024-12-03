@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Sidebar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    @vite(['resource/css/app.css', 'resource/js/app.js'])
+    <!--@vite(['resource/css/app.css', 'resource/js/app.js'])-->
 
     <style>
         @keyframes gradientAnimation {
@@ -39,7 +39,6 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                <span class="">PINJEMIN</span>
             </button>
 
             <!-- Menu Items -->
@@ -96,10 +95,10 @@
           <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div class="bg-blue-100 p-4 rounded-lg">
-                <h2 class="text-lg font-bold">Proyektor</h2>
+                <h2 class="text-lg font-bold">Speaker</h2>
                 <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
-                  <option value="10">Proyektor A (10 kuota)</option>
-                  <option value="20">Proyektor B (20 kuota)</option>
+                  <option value="10">Speaker A (10 kuota)</option>
+                  <option value="20">Speaker B (20 kuota)</option>
                 </select>
                 <div class="mt-2">Kuota: <span id="kuota-proyektor1">10</span></div>
                 <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
@@ -111,10 +110,10 @@
           <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div class="bg-blue-100 p-4 rounded-lg">
-                <h2 class="text-lg font-bold">Proyektor</h2>
+                <h2 class="text-lg font-bold">Alat Tulis</h2>
                 <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
-                  <option value="10">Proyektor A (10 kuota)</option>
-                  <option value="20">Proyektor B (20 kuota)</option>
+                  <option value="10">Alat Tulis A (10 kuota)</option>
+                  <option value="20">Alat Tulis B (20 kuota)</option>
                 </select>
                 <div class="mt-2">Kuota: <span id="kuota-proyektor1">10</span></div>
                 <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>

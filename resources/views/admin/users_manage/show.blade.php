@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Sidebar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    @vite(['resource/css/app.css', 'resource/js/app.js'])
+    <!--@vite(['resource/css/app.css', 'resource/js/app.js'])-->
 
     <style>
         @keyframes gradientAnimation {
@@ -119,7 +119,7 @@
                 </tbody>
             </table>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-                + TAMBAH PENGGUNA
+                + EDIT
             </button>
         </div>
     </div>
