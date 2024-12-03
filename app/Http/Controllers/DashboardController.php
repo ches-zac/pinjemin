@@ -20,7 +20,21 @@ class DashboardController extends Controller
         return view('dashboard', compact('lendings', 'title'));
     }
 
-    public function faq(){
-        return view('faq');
+    public function faq() {
+        $faqs = [
+            [
+                'question' => 'Apa itu website PINJEMIN?',
+                'answer' => 'PINJEMIN adalah sistem manajemen inventaris sekolah yang memungkinkan pengguna untuk meminjam barang.'
+            ],
+            [
+                'question' => 'Bagaimana cara meminjam barang?',
+                'answer' => 'Anda dapat login terlebih dahulu, memilih barang yang tersedia, lalu mengisi form peminjaman.'
+            ],
+            [
+                'question' => 'Apa saja barang yang bisa dipinjam?',
+                'answer' => 'Barang yang bisa dipinjam meliputi alat tulis, elektronik, dan kebutuhan belajar lainnya.'
+            ],
+        ];
+        return view('faq', compact('faqs'));
     }
 }
