@@ -63,8 +63,9 @@ Route::middleware('auth')->group(function () {
         });
         Route::prefix('/lending')->group(function () {
             Route::get('/', [LendingController::class, 'show'])->name('admin.lending.history');
+            Route::get('/filter', [LendingController::class, 'filter'])->name('admin.lending.filter');
             // Route::put('/edit/status', [LendingController::class, 'update'])->name('admin.lending.status.edit'); non aktif dulu
-            Route::delete('/delete/{lending}', [LendingController::class, 'destroy'])->name('admin.lending.delete'); // Proses hapus
+            // Route::delete('/delete/{lending}', [LendingController::class, 'destroy'])->name('admin.lending.delete'); // Proses hapus
             Route::get('/download-to-pdf', [LendingController::class, 'exportToPDF'])->name('admin.lending.download.pdf'); // Proses hapus
             Route::get('/download-to-excel', [LendingController::class, 'exportToExcel'])->name('admin.lending.download.excel'); // Proses hapus
         });

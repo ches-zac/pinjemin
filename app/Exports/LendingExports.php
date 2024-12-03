@@ -8,15 +8,28 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class LendingExport implements FromCollection, WithHeadings, WithMapping
 {
+    private $from_date;
+    private $to_date;
+
+    public function __construct($from_date = null, $to_date = null)
+    {
+        $this->from_date = $from_date;
+        $this->to_date = $to_date;
+    }
+
     public function collection()
     {
-        // Ambil data lending beserta relasinya
-        return Lending::with(['inventory', 'user'])->get();
+        $query = Lending::with(['inventory', 'user']);
+
+        if ($this->from_date && $this->to_date) {
+            $query->whereBetween('tanggal_peminjaman', [$this->from_date, $this->to_date]);
+        }
+
+        return $query->get();
     }
 
     public function headings(): array
     {
-        // Header kolom di file Excel
         return [
             'Nomor',
             'Nama User',
@@ -30,10 +43,12 @@ class LendingExport implements FromCollection, WithHeadings, WithMapping
 
     public function map($lending): array
     {
-        // Mapping data yang akan ditampilkan di setiap kolom
+        static $counter = 0;
+        $counter++;
+
         return [
-            $lending->id,
-            $lending->user->name,
+            $counter,
+            $lending->user->nama,
             $lending->inventory->nama_barang,
             $lending->ruangan,
             $lending->tanggal_peminjaman,

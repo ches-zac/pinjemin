@@ -21,7 +21,7 @@
                             <td class="border border-gray-200 py-2 text-center">{{ $loop->iteration }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->nama }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->email }}</td>
-                            <td class="border border-gray-200 py-2 text-center">{{ $item->no_telp }}</td>
+                            <td class="border border-gray-200 py-2 text-center">{{ ($item->no_telp ?? '-')}}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->role }}</td>
                             <td class="border border-gray-200 py-2 flex justify-center items-center gap-4">
                                 <a class="text-blue-600 hover:underline font-bold py-2 px-4 rounded" href="{{ route('edit.user', $item) }}">

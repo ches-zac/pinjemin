@@ -85,11 +85,25 @@ class LendingController extends Controller
     //fungsi lihat seluruh riwayat peminjaman
     public function show()
     {
-        // Ambil semua data inventory beserta kategori dan riwayat peminjaman dengan pagination
         $title = "Riwayat Peminjaman";
-        $data = Inventory::with(['category', 'lendings.user'])->paginate(5);
-        return view('admin.inventory.show', compact('data', 'title'));
+        $lendings = Lending::with(['inventory', 'user'])->paginate(5);
+        return view('admin.lending.show', compact('lendings', 'title'));
     }
+
+    public function filter(Request $request)
+    {
+        $query = Lending::query();
+
+        // Filter berdasarkan tanggal jika diberikan
+        if ($request->has('from_date') && $request->has('to_date')) {
+            $query->whereBetween('tanggal_peminjaman', [$request->from_date, $request->to_date]);
+        }
+
+        $lendings = $query->with(['user', 'inventory'])->paginate(5);
+
+        return view('admin.lending.show', compact('lendings'));
+    }
+
 
     //update status peminjaman data
     // public function update(Request $request, Lending $lending)
@@ -123,22 +137,33 @@ class LendingController extends Controller
     }
 
     //unduh data peminjaman dalam format pdf
-    public function exportToPDF()
-    {
-        // Ambil data peminjaman beserta relasi (inventory dan user)
-        $lendings = Lending::with(['inventory', 'user'])->get();
 
-        // Kirim data ke view untuk dijadikan template PDF
-        $pdf = Pdf::loadView('exports.lendings-pdf', compact('lendings'))
-                ->setPaper('a4', 'landscape'); // Ukuran dan orientasi kertas
+    public function exportToPDF(Request $request)
+    {
+        // Filter data sesuai input tanggal
+        $query = Lending::with(['inventory', 'user']);
+        $add_filter = "";
+
+        if ($request->has('from_date') && $request->has('to_date') && $request->from_date && $request->to_date) {
+            $query->whereBetween('tanggal_peminjaman', [$request->from_date, $request->to_date]);
+            $add_filter = "Rentang waktu: " . $request->from_date . " - " . $request->to_date;
+        }
+
+        $lendings = $query->get();
+
+        // Kirim data dan filter ke view
+        $pdf = Pdf::loadView('exports.lendings-pdf', compact('lendings', 'add_filter'))
+                    ->setPaper('a4', 'landscape'); // Ukuran dan orientasi kertas
 
         // Unduh file PDF
         return $pdf->download('data_peminjaman.pdf');
     }
 
-    public function exportToExcel()
+
+
+    public function exportToExcel($request)
     {
-        return Excel::download(new LendingExport, 'data_peminjaman.xlsx');
+        return Excel::download(new LendingExport($request->from_date, $request->to_date), 'data_peminjaman.xlsx');
     }
 
 
