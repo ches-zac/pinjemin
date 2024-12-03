@@ -33,7 +33,7 @@ class InventoryController extends Controller
         $data = Inventory::with('category')->get(); // Ambil semua data inventory
         $category = Category::all();
         $title = 'Daftar Inventori';
-        return view('item', compact('data', 'title'));
+        return view('item', compact('data', 'category', 'title'));
     }
 
     // Menampilkan form untuk menambah barang
