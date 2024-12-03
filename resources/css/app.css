@@ -16,7 +16,16 @@
 .transition-width {
     transition: width 0.3s ease-in-out;
 }
-
+.hologram {
+    background: linear-gradient(90deg, #ffffff, #3b82f6);
+    background-size: 200% 200%; /* Adjust size as needed */
+    animation: gradientAnimation 6s ease infinite;
+    position: absolute; /* Ensure proper positioning for full-screen effect */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 #sidebar {
     transition: width 0.3s ease;  /* Menambahkan transisi untuk lebar dengan durasi 0.3 detik */
 }

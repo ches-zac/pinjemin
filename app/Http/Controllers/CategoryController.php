@@ -16,13 +16,15 @@ class CategoryController extends Controller
         if ($user === 'admin') {
             return view('admin.category.show', compact('itemCategory'));
         }
-        return view('item', compact('itemCategory'));
+        $title = 'kategori';
+        return view('item', compact('itemCategory', 'title'));
     }
 
     // Menampilkan form untuk menambah kategori
     public function add()
     {
-        return view('admin.category.add');
+        $title = 'add-kategori';
+        return view('admin.category.add', compact('title'));
     }
 
     // Menyimpan kategori baru
@@ -42,7 +44,8 @@ class CategoryController extends Controller
     // Menampilkan form untuk mengedit kategori
     public function edit(Category $category)
     {
-        return view('admin.category.edit', compact('category'));
+        $title = 'form-kategori';
+        return view('admin.category.edit', compact('category', 'title'));
     }
 
     // Memperbarui kategori

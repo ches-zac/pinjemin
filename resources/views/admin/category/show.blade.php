@@ -8,9 +8,7 @@
                     <tr class="bg-teal-300">
                         <th class="border border-gray-200 py-2">No</th>
                         <th class="border border-gray-200 py-2">Barang</th>
-                        <th class="border border-gray-200 py-2">Kategori</th>
-                        <th class="border border-gray-200 py-2">Kuota</th>
-                        <th class="border border-gray-200 py-2">Aksi</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -41,13 +39,17 @@
                 </tbody>
             </table>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-                + TAMBAH PENGGUNA
+                + TAMBAH Kategori
             </button>
         </div>
     </div>
+    <div class = "mt-4">
+           {{ $lendings -> links() }}
+
+</div>
 @endsection
 
-{{-- 
+{{--
     <script>
         // Fungsi untuk mengambil data pengguna dari backend
         async function fetchData() {

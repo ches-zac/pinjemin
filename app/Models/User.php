@@ -20,7 +20,8 @@ class User extends Authenticatable
         'email',
         'password',
         'no_telp',
-        'role'
+        'role',
+        'profile_picture',
     ];
 
     protected $primarykey = 'user_id';
