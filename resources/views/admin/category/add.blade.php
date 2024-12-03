@@ -12,7 +12,7 @@
                 <!-- No -->
                 <div class="mb-6">
                     <label for="no" class="block mb-2 text-sm font-medium text-black">No</label>
-                    <input type="number" id="no" name="no" value="{{ old('no', $user->nama) }}"
+                    <input type="number" id="no" name="no" value="{{ old('no', $category->no) }}"
                         class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @error('no')
                         <span class="text-red-500">{{ $message }}</span>
@@ -21,8 +21,8 @@
 
                 <!-- Nama kategori -->
                 <div class="mb-6">
-                    <label for="nama kategori" class="block mb-2 text-sm font-medium text-black">Email</label>
-                    <input type="text" id="email" name="nama kategori" value="{{ old('nama kategori', $user->email) }}"
+                    <label for="nama_kategori" class="block mb-2 text-sm font-medium text-black">Nama kategori</label>
+                    <input type="text" id="nama_kategori" name="nama_kategori" value="{{ old('nama_kategori', $category->nama_kategori) }}"
                         class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
                     @error('email')
                         <span class="text-red-500">{{ $message }}</span>
