@@ -2,18 +2,17 @@
 
 @section('content')
         <!-- Content -->
-        @foreach ($data as $item)
+        @foreach ($category as $item)
         <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div class="bg-blue-100 p-4 rounded-lg">
                 <h2 class="text-lg font-bold">{{ $item->category->nama_kategori }}</h2>
                 <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
-                    @foreach ($data as $item)
-                        <option value="10">Proyektor A (10 kuota)</option>
-                        <option value="20">Proyektor B (20 kuota)</option>
+                    @foreach ($data as $itemDetail)
+                        <option value={{ $itemDetail->kuota }}>{{ $itemDetail->nama_barang }} ({{ $itemDetail->kuota }})</option>
                     @endforeach
                 </select>
-                <div class="mt-2">Kuota: <span id="kuota-proyektor1">10</span></div>
+                <div class="mt-2">Kuota: <span id="kuota-proyektor1">{{ $item->category->kuota }}</span></div>
                 <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
               </div>
               </div>
@@ -21,7 +20,7 @@
         @endforeach
 
 
-          <div class="container mx-auto px-4 py-8">
+          {{-- <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div class="bg-blue-100 p-4 rounded-lg">
                 <h2 class="text-lg font-bold">Speaker</h2>
@@ -47,7 +46,7 @@
                 <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
               </div>
               </div>
-          </div>
+          </div> --}}
 @endsection
 
 
