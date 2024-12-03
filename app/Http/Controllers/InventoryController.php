@@ -10,9 +10,8 @@ use Illuminate\Http\Request;
 class InventoryController extends Controller
 {
     // Menampilkan ketersediaan barang
-    public function checkAvailability($id)
+    public function checkAvailability(Inventory $inventory)
     {
-        $inventory = Inventory::findOrFail($id);
 
         if ($inventory->kuota > 0) {
             return response()->json([
@@ -33,8 +32,11 @@ class InventoryController extends Controller
         $data = Inventory::with('category')->get(); // Ambil semua data inventory
         $category = Category::all();
         $title = 'Daftar Inventori';
+        // if()
         return view('item', compact('data', 'category', 'title'));
     }
+
+
 
     // Menampilkan form untuk menambah barang
     public function addInventory()
@@ -65,7 +67,7 @@ class InventoryController extends Controller
     // Menampilkan form untuk mengedit barang
     public function editInventory(Inventory $inventory)
     {
-        $title = 'form-inventory';
+        $title = 'Edit Item Inventori';
         return view('admin.inventory.edit', compact('inventory', 'title'));
     }
 

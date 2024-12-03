@@ -12,18 +12,14 @@ class CategoryController extends Controller
     public function show()
     {
         $itemCategory = Category::all();
-        $user = Auth::user()->role;
-        if ($user === 'admin') {
-            return view('admin.category.show', compact('itemCategory'));
-        }
-        $title = 'kategori';
-        return view('item', compact('itemCategory', 'title'));
+        $title = 'Daftar Kategori';
+        return view('admin.category.show', compact('itemCategory', 'title'));
     }
 
     // Menampilkan form untuk menambah kategori
     public function add()
     {
-        $title = 'add-kategori';
+        $title = 'Tambah Kategori';
         return view('admin.category.add', compact('title'));
     }
 
@@ -44,7 +40,7 @@ class CategoryController extends Controller
     // Menampilkan form untuk mengedit kategori
     public function edit(Category $category)
     {
-        $title = 'form-kategori';
+        $title = 'Edit Kategori';
         return view('admin.category.edit', compact('category', 'title'));
     }
 

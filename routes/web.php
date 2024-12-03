@@ -27,10 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::get('inventory/categories', [InventoryController::class, 'showInventory'])->name('item.categories'); // List kategori
     Route::get('/inventory/{id}/check', [InventoryController::class, 'checkAvailability'])->name('inventory.check');
     Route::prefix('/lending')->group(function () {
-        Route::get('/lend', [LendingController::class, 'lendform'])->name('lending.form');
-        Route::post('/lend', [LendingController::class, 'lend'])->name('lending');
+        Route::get('/lend/{inventory}', [LendingController::class, 'lendform'])->name('lending.form');
+        Route::post('/lend/{inventory}', [LendingController::class, 'lend'])->name('lending');
         Route::get('/ongoing', [LendingController::class, 'myOnGoingLend'])->name('lending.ongoing');
-        Route::post('/{id}/return', [LendingController::class, 'return'])->name('lending.return');
+        Route::post('/{inventory}/return', [LendingController::class, 'return'])->name('lending.return');
     });
     Route::get('/faq', [DashboardController::class, 'faq'])->name('faq');
 
@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::get('/dashboard', [DashboardController::class, 'goToAdminDashboard'])->name('admin.dashboard');
         Route::prefix('/categories')->group(function () {
-            Route::get('/', [CategoryController::class, 'show'])->name('admin.categories.index'); // List kategori
+            Route::get('/', [CategoryController::class, 'show'])->name('admin.categories.show'); // List kategori
             Route::get('/add', [CategoryController::class, 'add'])->name('admin.categories.add'); // Form tambah
             Route::post('/add', [CategoryController::class, 'store'])->name('admin.categories.store'); // Proses tambah
             Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('admin.categories.edit'); // Form edit
@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
             Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.delete'); // Proses hapus
         });
         Route::prefix('/inventory')->group(function () {
-            Route::get('/', [InventoryController::class, 'showInventory'])->name('admin.inventory.index'); // List inventory
+            Route::get('/', [InventoryController::class, 'showInventory'])->name('admin.inventory.show'); // List inventory
             Route::get('/add', [InventoryController::class, 'addInventory'])->name('admin.inventory.add'); // Form tambah
             Route::post('/add', [InventoryController::class, 'storeInventory'])->name('admin.inventory.store'); // Proses tambah
             Route::get('/edit/{inventory}', [InventoryController::class, 'editInventory'])->name('admin.inventory.edit'); // Form edit
@@ -63,7 +63,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::prefix('/lending')->group(function () {
             Route::get('/', [LendingController::class, 'show'])->name('admin.lending.history');
-            Route::put('/edit/status', [LendingController::class, 'update'])->name('admin.lending.status.edit');
+            // Route::put('/edit/status', [LendingController::class, 'update'])->name('admin.lending.status.edit'); non aktif dulu
             Route::delete('/delete/{lending}', [LendingController::class, 'destroy'])->name('admin.lending.delete'); // Proses hapus
             Route::get('/download-to-pdf', [LendingController::class, 'exportToPDF'])->name('admin.lending.download.pdf'); // Proses hapus
             Route::get('/download-to-excel', [LendingController::class, 'exportToExcel'])->name('admin.lending.download.excel'); // Proses hapus

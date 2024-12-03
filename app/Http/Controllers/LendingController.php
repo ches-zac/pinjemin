@@ -12,13 +12,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class LendingController extends Controller
 {
-    public function lendForm(Inventory $item){
-        $title = 'lending per item';
+    public function lendForm(Inventory $inventory){
+        $title = 'Pinjam Barang';
         return view('lending-per-item', compact('item', 'title'));
     }
 
     // fungsi untuk user meminjam barang
-    public function lend(Request $request)
+    public function lend(Request $request, Inventory $inventory)
     {
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
@@ -27,8 +27,6 @@ class LendingController extends Controller
             'jam' => 'required|date_format:H:i',
             'tanggal_peminjaman' => 'required|date',
         ]);
-
-        $inventory = Inventory::findOrFail($validated['inventory_id']);
 
         // Cek ketersediaan barang
         if ($inventory->kuota <= 0) {
@@ -64,10 +62,8 @@ class LendingController extends Controller
 
 
     // fungsi untuk mengembalikan barang
-    public function return($id)
+    public function return(Lending $lending)
     {
-        $lending = Lending::findOrFail($id);
-
         // Pastikan status peminjaman belum dikembalikan
         if ($lending->status === 'dikembalikan') {
             return back()->with('error', 'Barang sudah dikembalikan.');
@@ -91,41 +87,40 @@ class LendingController extends Controller
     public function show()
     {
         // Ambil semua data inventory beserta kategori dan riwayat peminjaman dengan pagination
+        $title = "Riwayat Peminjaman";
         $data = Inventory::with(['category', 'lendings.user'])->paginate(10); // 10 item per halaman
-
-        return view('admin.inventory.show', compact('data'));
+        return view('admin.inventory.show', compact('data', 'title'));
     }
 
     //update status peminjaman data
-    public function update(Request $request, Lending $lending)
-    {
-        $validated = $request->validate([
-            'status' => 'string',
-        ], [
-            'status.string' => 'Status harus berupa angka.',
-        ]);
+    // public function update(Request $request, Lending $lending)
+    // {
+    //     $validated = $request->validate([
+    //         'status' => 'string',
+    //     ], [
+    //         'status.string' => 'Status harus berupa angka.',
+    //     ]);
 
-        // Perbarui data
-        if($validated['status'] === 'belum dikembalikan') {
-            $lending->update([
-                'status' => $validated['status'],
-                'tanggal_pengembalian' => nullValue(),
-            ]);
-        } else {
-            $lending->update([
-                'status' => $validated['status'],
-                'tanggal_pengembalian' => now(),
-            ]);
-        }
+    //     // Perbarui data
+    //     if($validated['status'] === 'belum dikembalikan') {
+    //         $lending->update([
+    //             'status' => $validated['status'],
+    //             'tanggal_pengembalian' => nullValue(),
+    //         ]);
+    //     } else {
+    //         $lending->update([
+    //             'status' => $validated['status'],
+    //             'tanggal_pengembalian' => now(),
+    //         ]);
+    //     }
 
-
-        return redirect()->route('admin.lending.show')->with('success', 'Data peminjaman berhasil diperbarui.');
-    }
+    //     return redirect()->route('admin.lending.show')->with('success', 'Data peminjaman berhasil diperbarui.');
+    // }
 
     public function destroy(Lending $lending)
     {
         $lending->delete(); // Hapus data
-        return redirect()->route('admin.lending.show')->with('success', 'Data peminjaman berhasil dihapus.');
+        return redirect()->route('admin.lending.delete')->with('success', 'Data peminjaman berhasil dihapus.');
     }
 
     //unduh data peminjaman dalam format pdf
