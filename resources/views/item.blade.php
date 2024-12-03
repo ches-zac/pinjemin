@@ -6,7 +6,7 @@
         <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div class="bg-blue-100 p-4 rounded-lg">
-                <h2 class="text-lg font-bold">{{ $item->category->nama_kategori }}</h2>
+                <h2 class="text-lg font-bold">{{ $item->nama_kategori }}</h2>
                 <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
                     @foreach ($data as $itemDetail)
                         <option value={{ $itemDetail->kuota }}>{{ $itemDetail->nama_barang }} ({{ $itemDetail->kuota }})</option>
