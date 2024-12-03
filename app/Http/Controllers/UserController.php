@@ -37,10 +37,10 @@ class UserController extends Controller
         return redirect()->route('show.users')->with('success', 'Role pengguna berhasil diperbarui.');
     }
 
-    public function destroy(User $user)
+    public function delete(User $user)
     {
-        $user->delete(); // Hapus data
-        return redirect()->route('show.users')->with('success', 'Barang berhasil dihapus.');
+        $user->delete(); // Hapus user
+        return redirect()->back()->with('success', 'Pengguna berhasil dihapus.');
     }
 
 }

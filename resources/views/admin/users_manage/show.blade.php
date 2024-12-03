@@ -24,12 +24,12 @@
                             <td class="border border-gray-200 py-2 text-center">{{ $item->role }}</td>
                             <td class="border border-gray-200 py-2 text-center">
                                 <!-- Tombol Edit -->
-                                <a href="{{ route('edit.user', $user->id) }}"
+                                <a href="{{ route('edit.user', $item) }}"
                                     class="text-blue-600 hover:underline font-medium">Edit
                                 </a>
 
                                 <!-- Tombol Hapus -->
-                                <form action="{{ route('delete.user', $user->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus pengguna ini?');">
+                                <form action="{{ route('delete.user', $item) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus pengguna ini?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:underline font-medium">Hapus</button>

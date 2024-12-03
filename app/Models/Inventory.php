@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Inventory extends Model
 {
     use HasFactory;
+
+    public function getRouteKeyName()
+    {
+        return 'nama_barang'; // Ganti dengan nama kolom yang Anda gunakan, misalnya 'slug'
+    }
+
     //field yang bisa diisi
     protected $fillable = [
         'nama_barang',

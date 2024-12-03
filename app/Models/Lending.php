@@ -10,6 +10,11 @@ class Lending extends Model
 {
     use HasFactory, Notifiable;
 
+    public function getRouteKeyName()
+    {
+        return 'tanggal_peminjaman'; // Ganti dengan nama kolom yang Anda gunakan, misalnya 'slug'
+    }
+
     protected $fillable = [
         'user_id',
         'inventory_id',

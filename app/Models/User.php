@@ -15,6 +15,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     public function getRouteKeyName()
+     {
+         return 'nama'; // Ganti dengan nama kolom yang Anda gunakan, misalnya 'slug'
+     }
+
     protected $fillable = [
         'nama',
         'email',

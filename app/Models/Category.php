@@ -9,6 +9,12 @@ use App\Models\Inventory;
 class Category extends Model
 {
     use HasFactory;
+
+    public function getRouteKeyName()
+    {
+        return 'nama_kategori'; // Ganti dengan nama kolom yang Anda gunakan, misalnya 'slug'
+    }
+
     protected $fillable = ['nama_kategori'];
 
     // Relasi ke model Inventory
