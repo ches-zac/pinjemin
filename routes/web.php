@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit', [ProfileController::class, 'edit'])->name('edit.profile');
         Route::put('/edit', [ProfileController::class, 'update'])->name('update.profile'); // Proses edit
     });
-    Route::get('inventory/categories', [CategoryController::class, 'show'])->name('item.categories'); // List kategori
+    Route::get('inventory/categories', [InventoryController::class, 'showInventory'])->name('item.categories'); // List kategori
     Route::get('/inventory/{id}/check', [InventoryController::class, 'checkAvailability'])->name('inventory.check');
     Route::prefix('/lending')->group(function () {
         Route::get('/lend', [LendingController::class, 'lendform'])->name('lending.form');
@@ -40,8 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::prefix('/users')->group(function () {
             Route::get('/show', [UserController::class, 'show'])->name('show.users');
-            Route::get('/edit', [UserController::class, 'edit'])->name('edit.users');
-            Route::get('/edit', [UserController::class, 'update'])->name('update.users');
+            Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit.user');
+            Route::post('/{id}/edit', [UserController::class, 'update'])->name('update.user');
         });
         Route::get('/dashboard', [DashboardController::class, 'goToAdminDashboard'])->name('admin.dashboard');
         Route::prefix('/categories')->group(function () {

@@ -30,7 +30,6 @@
               </div>
           </div>
 
-
           <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div class="bg-blue-100 p-4 rounded-lg">
@@ -45,12 +44,6 @@
               </div>
           </div>
 @endsection
-
-
-
-
-
-
 
 
 {{--
