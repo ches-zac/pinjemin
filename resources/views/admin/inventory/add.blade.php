@@ -13,7 +13,7 @@
                 <!-- No -->
                 <div class="mb-6">
                     <label for="no" class="block mb-2 text-sm font-medium text-black">No</label>
-                    <input type="number" id="no" name="no" value="{{ old('no', $user->nama) }}"
+                    <input type="number" id="no" name="no" value="{{ old('no', $inventory->no) }}"
                         class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @error('no')
                         <span class="text-red-500">{{ $message }}</span>
@@ -23,7 +23,7 @@
                 <!-- Barang -->
                 <div class="mb-6">
                     <label for="nama_barang" class="block mb-2 text-sm font-medium text-black">Barang</label>
-                    <input type="text" id="nama_barang" name="nama_barang" value="{{ old('nama_barang', $user->email) }}"
+                    <input type="text" id="nama_barang" name="nama_barang" value="{{ old('nama_barang', $inventory->nama_barang) }}"
                         class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
                     @error('nama_barang')
                         <span class="text-red-500">{{ $message }}</span>
@@ -33,7 +33,7 @@
                 <!-- Kategori -->
                 <div class="mb-6">
                     <label for="category_id" class="block mb-2 text-sm font-medium text-black">Kategori</label>
-                    <input type="text" id="category_id" name="category_id" value="{{ old('category_id', $user->email) }}"
+                    <input type="text" id="category_id" name="category_id" value="{{ old('category_id', $category->category_id) }}"
                         class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
                     @error('category_id')
                         <span class="text-red-500">{{ $message }}</span>
@@ -43,7 +43,7 @@
                 <!-- Kuota  -->
                 <div class="mb-6">
                     <label for="kuota" class="block mb-2 text-sm font-medium text-black">Kuota</label>
-                    <input type="kuota" id="kuota" name="kuota" value="{{ old('kuota', $user->email) }}"
+                    <input type="kuota" id="kuota" name="kuota" value="{{ old('kuota', $inventory->Kuota) }}"
                         class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
                     @error('kuota')
                         <span class="text-red-500">{{ $message }}</span>
