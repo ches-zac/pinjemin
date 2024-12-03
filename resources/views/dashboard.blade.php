@@ -15,8 +15,8 @@
             <tbody>
                 @forelse ($lendings as $lending)
                     <tr>
-                        <td class="border border-gray-200 py-2 text-center">{{ $lending->user_id->nama }}</td>
-                        <td class="border border-gray-200 py-2 text-center">{{ $lending->inventory_id->nama_barang }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->user->nama }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->inventory->nama_barang }}</td>
                         <td class="border border-gray-200 py-2 text-center">{{ $lending->ruangan }}</td>
                         <td class="border border-gray-200 py-2 text-center">{{ $lending->status }}</td>
                     </tr>
@@ -27,5 +27,8 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+    <div class="mt-4">
+        {{ $lendings->links() }}
     </div>
 @endsection

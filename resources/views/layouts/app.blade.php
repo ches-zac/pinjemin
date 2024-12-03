@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ "Pinjemin | " . ($title ?? 'Dashboard') }}</title>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -22,11 +21,12 @@
 <body class="bg-gray-100">
     <x-header />
     <div class="flex h-screen">
-        @if (auth()->user()->isAdmin()) <x-sidenav-admin::AdminSidebar />
-        @else
-            <x-sidenav />
-        @endif
-        <main class="bg-white flex-1 p-8">
+    @if (auth()->user()->isAdmin())
+        <x-sidenav-admin />
+    @else
+        <x-sidenav />
+    @endif
+        <main class="bg-white flex-1 p-8 ml-16">
             @yield('content')
         </main>
     </div>
