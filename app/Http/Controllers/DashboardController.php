@@ -9,13 +9,15 @@ class DashboardController extends Controller
 {
     public function goToAdminDashboard() {
         $lendings = Lending::orderBy('created_at', 'desc')->take(10)->get();
-        return view('admin.dashborad', compact('lendings'));
+        $title  = 'Admin Dashboard';
+        return view('admin.dashborad', compact('lendings', 'title'));
     }
 
     public function goToUserDashboard() {
 
         $lendings = Lending::orderBy('created_at', 'desc')->take(10)->get();
-        return view('dashborad', compact('lendings'));
+        $title  = 'Dashboard';
+        return view('dashboard', compact('lendings', 'title'));
     }
 
     public function faq(){

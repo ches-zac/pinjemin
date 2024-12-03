@@ -13,20 +13,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($lendings as $lending)
+                @forelse ($lendings as $lending)
                     <tr>
-                        <td class="border border-gray-200 py-2 text-center">Data 1</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 2</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 3</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->user_id->nama }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->inventory_id->nama_barang }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->ruangan }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->status }}</td>
                     </tr>
-                @endforeach
-                <tr>
-                    <td class="border border-gray-200 py-2 text-center">Data 5</td>
-                    <td class="border border-gray-200 py-2 text-center">Data 6</td>
-                    <td class="border border-gray-200 py-2 text-center">Data 7</td>
-                    <td class="border border-gray-200 py-2 text-center">Data 8</td>
-                </tr>
+                @empty
+                    <tr>
+                        <td colspan="4" class="border border-gray-200 py-2 text-center">{{ "Data Tidak Tersedia" }}</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

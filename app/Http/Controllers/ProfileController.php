@@ -13,18 +13,22 @@ class ProfileController extends Controller
     //fungsi menampilkan view profile user
     public function show()
     {
+        $title = 'Profile';
         /** @var \App\Models\User $user */
         return view('profile.show', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'title' => $title
         ]);
     }
 
     //fungsi untuk memindahkan user ke halaman edit profile
     public function edit()
     {
+        $title = 'Edit Profile';
         /** @var \App\Models\User $user */
         return view('profile.edit', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'title' => $title
         ]);
     }
 
@@ -40,7 +44,7 @@ class ProfileController extends Controller
             $validated = $request->validate([
                 'nama' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
-                // 'avatar' => ['nullable', 'image', 'max:1024'],
+                'avatar' => ['nullable', 'image', 'max:1024'],
                 'no_telp' => ['nullable', 'string', 'max:20'],
             ]);
 
