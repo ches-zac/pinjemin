@@ -1,3 +1,78 @@
+@extends('layouts.app')
+
+@section('content')
+        <!-- Content -->
+        <div class="bg-white flex-1 p-8">
+            <table class="table-auto w-full border border-gray-200">
+                <thead>
+                    <tr class="bg-teal-300">
+                        <th class="border border-gray-200 py-2">No</th>
+                        <th class="border border-gray-200 py-2">Barang</th>
+                        <th class="border border-gray-200 py-2">Ruangan</th>
+                        <th class="border border-gray-200 py-2">Jam</th>
+                        <th class="border border-gray-200 py-2 flex item-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                              </svg>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-200 py-2 text-center">1</td>
+                        <td class="border border-gray-200 py-2 text-center">Proyektor</td>
+                        <td class="border border-gray-200 py-2 text-center">Ruangan 2</td>
+                        <td class="border border-gray-200 py-2 text-center">10.00</td>
+                        <td><button class="border border-gray-200 py-2 flex item-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                              </svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 py-2 text-center">2</td>
+                        <td class="border border-gray-200 py-2 text-center">Speaker</td>
+                        <td class="border border-gray-200 py-2 text-center">Ruangan 7</td>
+                        <td class="border border-gray-200 py-2 text-center">12.00</td>
+                        <td> <button class="border border-gray-200 py-2 flex item-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                              </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
+
+
+{{-- <script>
+
+        const iconButton = document.querySelector('.border.border-gray-200.py-2.flex.items-center.justify-center'); // Select the button element
+
+        iconButton.addEventListener('click', () => {
+        // Your JavaScript code to execute on click (e.g., open a modal, sort data)
+        console.log('Icon clicked!'); // Example placeholder
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar.classList.contains("w-16")) {
+                sidebar.classList.remove("w-16");
+                sidebar.classList.add("w-64");
+                sidebar.classList.add("md:flex");
+            } else {
+                sidebar.classList.remove("w-64");
+                sidebar.classList.add("w-16");
+            }
+        }
+    </script>
+
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,76 +149,4 @@
                 </a>
             </nav>
         </div>
-
-
-
-        <!-- Content -->
-        <div class="bg-white flex-1 p-8">
-            <table class="table-auto w-full border border-gray-200">
-                <thead>
-                    <tr class="bg-teal-300">
-                        <th class="border border-gray-200 py-2">Nama</th>
-                        <th class="border border-gray-200 py-2">Barang</th>
-                        <th class="border border-gray-200 py-2">Ruangan</th>
-                        <th class="border border-gray-200 py-2">Jam</th>
-                        <th class="border border-gray-200 py-2 flex item-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                              </svg>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="border border-gray-200 py-2 text-center">1</td>
-                        <td class="border border-gray-200 py-2 text-center">Proyektor</td>
-                        <td class="border border-gray-200 py-2 text-center">Ruangan 2</td>
-                        <td class="border border-gray-200 py-2 text-center">10.00</td>
-                        <td><button class="border border-gray-200 py-2 flex item-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                              </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 py-2 text-center">2</td>
-                        <td class="border border-gray-200 py-2 text-center">Speaker</td>
-                        <td class="border border-gray-200 py-2 text-center">Ruangan 7</td>
-                        <td class="border border-gray-200 py-2 text-center">12.00</td>
-                        <td> <button class="border border-gray-200 py-2 flex item-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                              </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <script>
-
-        const iconButton = document.querySelector('.border.border-gray-200.py-2.flex.items-center.justify-center'); // Select the button element
-
-        iconButton.addEventListener('click', () => {
-        // Your JavaScript code to execute on click (e.g., open a modal, sort data)
-        console.log('Icon clicked!'); // Example placeholder
-        });
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            if (sidebar.classList.contains("w-16")) {
-                sidebar.classList.remove("w-16");
-                sidebar.classList.add("w-64");
-                sidebar.classList.add("md:flex");
-            } else {
-                sidebar.classList.remove("w-64");
-                sidebar.classList.add("w-16");
-            }
-        }
-    </script>
-
-</body>
-</html>
+ --}}
