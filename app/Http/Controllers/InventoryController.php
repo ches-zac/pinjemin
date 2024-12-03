@@ -30,7 +30,7 @@ class InventoryController extends Controller
     public function showInventory()
     {
         $data = Inventory::with('category')->get(); // Ambil semua data inventory
-        $title = 'Inventory';
+        $title = 'Daftar Inventori';
         return view('item', compact('data', 'title'));
     }
 

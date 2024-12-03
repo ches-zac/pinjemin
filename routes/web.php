@@ -40,8 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::prefix('/users')->group(function () {
             Route::get('/show', [UserController::class, 'show'])->name('show.users');
-            Route::get('/edit', [UserController::class, 'edit'])->name('edit.users');
-            Route::get('/edit', [UserController::class, 'update'])->name('update.users');
+            Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit.user');
+            Route::post('/{id}/edit', [UserController::class, 'update'])->name('update.user');
         });
         Route::get('/dashboard', [DashboardController::class, 'goToAdminDashboard'])->name('admin.dashboard');
         Route::prefix('/categories')->group(function () {
