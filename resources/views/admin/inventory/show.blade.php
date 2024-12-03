@@ -1,3 +1,119 @@
+@extends('layouts.app')
+
+@section('content')
+        <!-- Content -->
+        <div class="bg-white flex-1 p-8">
+            <div class="flex space-x-2 p-2 mb-4">
+                <label for="start-date" class="text-sm-3">Dari:</label>
+                <input type="date" id="start-date" class="mx-2 w-24">
+                <label for="end-date" class="text-sm-3">Sampai:</label>
+                <input type="date" id="end-date" class="mx-2 w-24">
+              </div>
+            <table class="table-auto w-full border border-gray-200">
+                <thead>
+                    <tr class="bg-teal-300">
+                        <th class="border border-gray-200 py-2">No</th>
+                        <th class="border border-gray-200 py-2">Nama</th>
+                        <th class="border border-gray-200 py-2">Barang</th>
+                        <th class="border border-gray-200 py-2">Tanggal</th>
+                        <th class="border border-gray-200 py-2">Jam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-200 py-2 text-center">Data 1</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 2</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 3</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 py-2 text-center">Data 5</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 6</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 7</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 8</td>
+                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded mt-4 flex items-center gap-x-2"">
+                Unduh Laporan
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+            </button>
+        </div>
+    </div>
+@endsection
+
+{{-- 
+    <script>
+        // Fungsi untuk mengambil data pengguna dari backend
+        async function fetchData() {
+        try {
+            const response = await fetch('/api/users'); // Ganti dengan endpoint Anda
+            const data = await response.json();
+
+            // Update tampilan tabel dengan data yang baru diambil
+            updateTable(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        }
+
+        // Fungsi untuk memperbarui tampilan tabel
+        function updateTable(data) {
+        const tableBody = document.querySelector('tbody');
+        tableBody.innerHTML = ''; // Kosongkan tabel terlebih dahulu
+
+        data.forEach(user => {
+            const row = document.createElement('tr');
+            // ... tambahkan sel-sel tabel dengan data pengguna ...
+            row.innerHTML = `
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>
+                <button onclick="deleteData(${user.id})">Hapus</button>
+            </td>
+            `;
+            tableBody.appendChild(row);
+        });
+        }
+
+        // Fungsi untuk menghapus data pengguna
+        async function deleteData(id) {
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            try {
+            const response = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                console.log('Data berhasil dihapus');
+                fetchData(); // Panggil kembali fetchData untuk memperbarui tabel
+            } else {
+                console.error('Gagal menghapus data');
+            }
+            } catch (error) {
+            console.error('Terjadi kesalahan:', error);
+            }
+        }
+        }
+
+        // Panggil fetchData() saat halaman dimuat untuk mengambil data awal
+        fetchData();
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar.classList.contains("w-16")) {
+                sidebar.classList.remove("w-16");
+                sidebar.classList.add("w-64");
+                sidebar.classList.add("md:flex");
+            } else {
+                sidebar.classList.remove("w-64");
+                sidebar.classList.add("w-16");
+            }
+        }
+    </script>
+
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,116 +190,4 @@
                 </a>
             </nav>
         </div>
-
-
-        <!-- Content -->
-        <div class="bg-white flex-1 p-8">
-            <div class="flex space-x-2 p-2 mb-4">
-                <label for="start-date" class="text-sm-3">Dari:</label>
-                <input type="date" id="start-date" class="mx-2 w-24">
-                <label for="end-date" class="text-sm-3">Sampai:</label>
-                <input type="date" id="end-date" class="mx-2 w-24">
-              </div>
-            <table class="table-auto w-full border border-gray-200">
-                <thead>
-                    <tr class="bg-teal-300">
-                        <th class="border border-gray-200 py-2">No</th>
-                        <th class="border border-gray-200 py-2">Nama</th>
-                        <th class="border border-gray-200 py-2">Barang</th>
-                        <th class="border border-gray-200 py-2">Tanggal</th>
-                        <th class="border border-gray-200 py-2">Jam</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="border border-gray-200 py-2 text-center">Data 1</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 2</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 3</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 py-2 text-center">Data 5</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 6</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 7</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 8</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 4</td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded mt-4 flex items-center gap-x-2"">
-                Unduh Laporan
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-            </button>
-        </div>
-    </div>
-
-    <script>
-        // Fungsi untuk mengambil data pengguna dari backend
-        async function fetchData() {
-        try {
-            const response = await fetch('/api/users'); // Ganti dengan endpoint Anda
-            const data = await response.json();
-
-            // Update tampilan tabel dengan data yang baru diambil
-            updateTable(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        }
-
-        // Fungsi untuk memperbarui tampilan tabel
-        function updateTable(data) {
-        const tableBody = document.querySelector('tbody');
-        tableBody.innerHTML = ''; // Kosongkan tabel terlebih dahulu
-
-        data.forEach(user => {
-            const row = document.createElement('tr');
-            // ... tambahkan sel-sel tabel dengan data pengguna ...
-            row.innerHTML = `
-            <td>${user.id}</td>
-            <td>${user.name}</td>
-            <td>
-                <button onclick="deleteData(${user.id})">Hapus</button>
-            </td>
-            `;
-            tableBody.appendChild(row);
-        });
-        }
-
-        // Fungsi untuk menghapus data pengguna
-        async function deleteData(id) {
-        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-            try {
-            const response = await fetch(`/api/users/${id}`, { method: 'DELETE' });
-            if (response.ok) {
-                console.log('Data berhasil dihapus');
-                fetchData(); // Panggil kembali fetchData untuk memperbarui tabel
-            } else {
-                console.error('Gagal menghapus data');
-            }
-            } catch (error) {
-            console.error('Terjadi kesalahan:', error);
-            }
-        }
-        }
-
-        // Panggil fetchData() saat halaman dimuat untuk mengambil data awal
-        fetchData();
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            if (sidebar.classList.contains("w-16")) {
-                sidebar.classList.remove("w-16");
-                sidebar.classList.add("w-64");
-                sidebar.classList.add("md:flex");
-            } else {
-                sidebar.classList.remove("w-64");
-                sidebar.classList.add("w-16");
-            }
-        }
-    </script>
-
-</body>
-</html>
+ --}}
