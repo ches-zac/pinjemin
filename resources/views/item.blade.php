@@ -24,7 +24,7 @@
                   <option value="10">Speaker A (10 kuota)</option>
                   <option value="20">Speaker B (20 kuota)</option>
                 </select>
-                <div class="mt-2">Kuota: <span id="kuota-proyektor1">10</span></div>
+                <div class="mt-2">Kuota: <span id="kuota-proyektor1">{{ $data->kuota}}</span></div>
                 <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
               </div>
               </div>
