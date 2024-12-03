@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
+use App\Models\Category;
 use App\Models\Lending;
 use Illuminate\Http\Request;
 
@@ -30,8 +31,9 @@ class InventoryController extends Controller
     public function showInventory()
     {
         $data = Inventory::with('category')->get(); // Ambil semua data inventory
+        $category = Category::all();
         $title = 'Daftar Inventori';
-        return view('item', compact('data', 'title'));
+        return view('item', compact('data', 'category', 'title'));
     }
 
     // Menampilkan form untuk menambah barang
