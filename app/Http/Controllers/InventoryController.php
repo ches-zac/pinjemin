@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventory;
-use App\Models\Category;
 use App\Models\Lending;
+use App\Models\Category;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InventoryController extends Controller
 {
@@ -29,12 +30,21 @@ class InventoryController extends Controller
     // Menampilkan semua barang
     public function showInventory()
     {
-        $data = Inventory::with('category')->get(); // Ambil semua data inventory
+        // Ambil data inventory dengan relasi category
+        $data = Inventory::with('category')->get();
         $category = Category::all();
         $title = 'Daftar Inventori';
-        // if()
+
+        // Periksa role pengguna saat ini
+        if (Auth::user()->role === 'admin') {
+            // Jika admin, buka view admin.inventory.show
+            return view('admin.inventory.show', compact('data', 'category', 'title'));
+        }
+
+        // Jika user biasa, buka view item
         return view('item', compact('data', 'category', 'title'));
     }
+
 
 
 
