@@ -45,6 +45,10 @@
             </button>
         </div>
     </div>
+    <div class = "mt-4">
+           {{ $lendings -> links() }}
+
+</div>
 @endsection
 
 {{--
