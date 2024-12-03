@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div id="sidebar" class="bg-teal-300 w-16 transition-all duration-300 flex flex-col items-center py-6 overflow-hidden min-h-screen fixed shadow-lg">
+<div id="sidebar" class="bg-blue-400 w-16 transition-all duration-300 flex flex-col items-center py-6 overflow-hidden min-h-screen fixed shadow-lg">
     <!-- Toggle Button -->
     <button onclick="toggleSidebar()" class="text-black mb-6">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
