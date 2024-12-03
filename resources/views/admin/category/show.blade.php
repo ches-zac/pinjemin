@@ -8,9 +8,7 @@
                     <tr class="bg-teal-300">
                         <th class="border border-gray-200 py-2">No</th>
                         <th class="border border-gray-200 py-2">Barang</th>
-                        <th class="border border-gray-200 py-2">Kategori</th>
-                        <th class="border border-gray-200 py-2">Kuota</th>
-                        <th class="border border-gray-200 py-2">Aksi</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -45,6 +43,10 @@
             </button>
         </div>
     </div>
+    <div class = "mt-4">
+           {{ $lendings -> links() }}
+
+</div>
 @endsection
 
 {{--

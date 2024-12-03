@@ -41,19 +41,6 @@
                     @enderror
                 </div>
 
-                <!-- Role -->
-                <div class="mb-6">
-                    <label for="role" class="block mb-2 text-sm font-medium text-black">Role</label>
-                    <select id="role" name="role"
-                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
-                        <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
-                    </select>
-                    @error('role')
-                        <span class="text-red-500">{{ $message }}</span>
-                    @enderror
-                </div>
-
                 <!-- No Telp -->
                 <div class="mb-6">
                     <label for="no_telp" class="block mb-2 text-sm font-medium text-black">No. Telp</label>

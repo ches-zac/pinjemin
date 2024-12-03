@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <!-- Content -->
         <div class="bg-white flex-1 p-8">
+        
             <table class="table-auto w-full border border-gray-200">
                 <thead>
                     <tr class="bg-teal-300">
@@ -69,6 +72,12 @@
             </button> --}}
         </div>
     </div>
+
+    <div class = "mt-4">
+           {{ $lendings -> links() }}
+
+</div>
+
 @endsection
 
 {{-- <script>
