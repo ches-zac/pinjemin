@@ -14,7 +14,7 @@
                 <div class="mb-6">
                     <label for="nama" class="block mb-2 text-sm font-medium text-black">Nama</label>
                     <input type="text" id="nama" name="nama" value="{{ old('nama', $user->nama) }}"
-                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-[#dd7c1b]-500 focus:border-[#dd7c1b]-500 block w-full p-2.5">
                     @error('nama')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
@@ -24,7 +24,7 @@
                 <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-black">Email</label>
                     <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"
-                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-[#dd7c1b]-500 focus:border-[#dd7c1b]-500 block w-full p-2.5" readonly>
                     @error('email')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
@@ -34,7 +34,7 @@
                 <div class="mb-6">
                     <label for="password" class="block mb-2 text-sm font-medium text-black">Password</label>
                     <input type="password" id="password" name="password"
-                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-[#dd7c1b]-500 focus:border-[#dd7c1b]-500 block w-full p-2.5">
                     <small class="text-gray-400">Kosongkan jika tidak ingin mengubah password</small>
                     @error('password')
                         <span class="text-red-500">{{ $message }}</span>
@@ -45,7 +45,7 @@
                 <div class="mb-6">
                     <label for="no_telp" class="block mb-2 text-sm font-medium text-black">No. Telp</label>
                     <input type="text" id="no_telp" name="no_telp" value="{{ old('no_telp', $user->no_telp) }}"
-                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-[#dd7c1b]-500 focus:border-[#dd7c1b]-500 block w-full p-2.5">
                     @error('no_telp')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror

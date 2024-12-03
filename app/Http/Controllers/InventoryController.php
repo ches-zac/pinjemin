@@ -11,21 +11,21 @@ use Illuminate\Support\Facades\Auth;
 class InventoryController extends Controller
 {
     // Menampilkan ketersediaan barang
-    public function checkAvailability(Inventory $inventory)
-    {
+    // public function checkAvailability(Inventory $inventory)
+    // {
 
-        if ($inventory->kuota > 0) {
-            return response()->json([
-                'status' => 'Tersedia',
-                'sisa_kuota' => $inventory->kuota
-            ]);
-        }
+    //     if ($inventory->kuota > 0) {
+    //         return response()->json([
+    //             'status' => 'Tersedia',
+    //             'sisa_kuota' => $inventory->kuota
+    //         ]);
+    //     }
 
-        return response()->json([
-            'status' => 'Tidak Tersedia',
-            'sisa_kuota' => 0
-        ]);
-    }
+    //     return response()->json([
+    //         'status' => 'Tidak Tersedia',
+    //         'sisa_kuota' => 0
+    //     ]);
+    // }
 
     // Menampilkan semua barang
     public function showInventory()
@@ -48,7 +48,8 @@ class InventoryController extends Controller
     public function addInventory()
     {
         $title = 'add-inventory';
-        return view('admin.inventory.add', compact('title'));
+        $categories = Category::all();
+        return view('admin.inventory.add', compact('title', 'categories'));
     }
 
     // Menyimpan barang baru
@@ -74,14 +75,15 @@ class InventoryController extends Controller
     public function editInventory(Inventory $inventory)
     {
         $title = 'Edit Item Inventori';
-        return view('admin.inventory.edit', compact('inventory', 'title'));
+        $categories = Category::all(); // Mengambil semua kategori
+        return view('admin.inventory.edit', compact('inventory', 'title', 'categories'));
     }
 
     // Memperbarui barang
     public function updateInventory(Request $request, Inventory $inventory)
     {
         $validated = $request->validate([
-            'kuota' => 'required|numeric|min:1',
+            'kuota' => 'required|numeric|min:0',
             'nama_barang' => 'required|string|max:255',
             'category_id' => 'required|numeric|exists:categories,id',
         ], [

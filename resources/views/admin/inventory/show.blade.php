@@ -40,7 +40,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="border border-gray-200 py-2 text-center">{{ "Data Tidak Tersedia" }}</td>
+                        <td colspan="5" class="border border-gray-200 py-2 text-center">{{ "Data Tidak Tersedia" }}</td>
                     </tr>
                 @endforelse
                 </tbody>
@@ -48,12 +48,12 @@
             <div class = "mt-4">
                 {{ $data -> links() }}
             </div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+            <a href="{{ route('admin.inventory.add') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 mr-4">
                 + Tambah Barang
-            </button>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+            </a>
+            <a href="{{ route('admin.categories.show') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
                 Lihat Kategori
-            </button>
+            </a>
         </div>
     </div>
 @endsection
