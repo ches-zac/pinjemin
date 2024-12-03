@@ -30,7 +30,8 @@ class InventoryController extends Controller
     public function showInventory()
     {
         $data = Inventory::with('category')->get(); // Ambil semua data inventory
-        return view('admin.inventory.show', compact('data'));
+        $title = 'Inventory';
+        return view('admin.inventory.show', compact('data', 'title'));
     }
 
     // Menampilkan form untuk menambah barang

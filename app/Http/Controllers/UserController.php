@@ -9,12 +9,14 @@ class UserController extends Controller
 {
     public function show() {
         $users = User::all();
-        return view('admin.users_manage.show', compact('users'));
+        $title = 'user';
+        return view('admin.users_manage.show', compact('users', 'title'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.users_manage.show', compact('user'));
+        $title = 'edit-user';
+        return view('admin.users_manage.show', compact('user', 'title'));
     }
 
 }
