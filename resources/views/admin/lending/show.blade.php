@@ -48,7 +48,8 @@
         {{ $lendings->appends(request()->query())->links() }}
     </div>
     <div class="mt-4 flex justify-end">
-        <a href="{{ route('admin.lending.download.pdf') }}" id="export-pdf" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+        <a href="{{  route('admin.lending.download.pdf', ['from_date' => request('from_date'), 'to_date' => request('to_date')]) }}"
+            id="export-pdf" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
             {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1h16v-1H4zM4 10v4H2v4h2v-4zM22 9l-10-10-10 10" />
             </svg> --}}

@@ -147,6 +147,13 @@ class LendingController extends Controller
         if ($request->has('from_date') && $request->has('to_date') && $request->from_date && $request->to_date) {
             $query->whereBetween('tanggal_peminjaman', [$request->from_date, $request->to_date]);
             $add_filter = "Rentang waktu: " . $request->from_date . " - " . $request->to_date;
+
+            // Buat nama file berdasarkan rentang waktu
+            $file_name = 'data_peminjaman_' . str_replace('-', '_', $request->from_date) .
+                         '_to_' . str_replace('-', '_', $request->to_date) . '.pdf';
+        } else {
+            // Default nama file jika tidak ada filter
+            $file_name = 'data_peminjaman_all.pdf';
         }
 
         $lendings = $query->get();
@@ -156,7 +163,7 @@ class LendingController extends Controller
                     ->setPaper('a4', 'landscape'); // Ukuran dan orientasi kertas
 
         // Unduh file PDF
-        return $pdf->download('data_peminjaman.pdf');
+        return $pdf->download($file_name);
     }
 
 
