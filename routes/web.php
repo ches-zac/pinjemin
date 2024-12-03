@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     // Route untuk admin
     Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::prefix('/users')->group(function () {
-            Route::get('/show', [UserController::class, 'show'])->name('show_users');
+            Route::get('/show', [UserController::class, 'show'])->name('show.users');
         });
         Route::get('/dashboard', [DashboardController::class, 'goToAdminDashboard'])->name('admin.dashboard');
         Route::prefix('/categories')->group(function () {
