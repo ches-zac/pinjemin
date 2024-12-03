@@ -26,7 +26,7 @@
     @else
         <x-sidenav />
     @endif
-        <main class="bg-white flex-1 p-8 ml-16">
+        <main class="bg-white flex-1 p-8 ml-16 items-center justify-center">
             @yield('content')
         </main>
     </div>
