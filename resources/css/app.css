@@ -17,7 +17,7 @@
     transition: width 0.3s ease-in-out;
 }
 .hologram {
-    background: linear-gradient(90deg, #06b6d4, #3b82f6, #9333ea, #f59e0b, #10b981);
+    background: linear-gradient(90deg, #ffffff, #3b82f6);
     background-size: 200% 200%; /* Adjust size as needed */
     animation: gradientAnimation 6s ease infinite;
     position: absolute; /* Ensure proper positioning for full-screen effect */

@@ -17,7 +17,7 @@
         <!-- Left Section -->
         <div class="w-1/2 relative">
             <!-- Background image -->
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-[length:200%_200%] gradient-animation animate-hologram"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-[length:200%_200%] hologram animate-hologram"></div>
             <!-- Overlay -->
 
             <!-- Logo and Text -->
