@@ -13,18 +13,22 @@ class ProfileController extends Controller
     //fungsi menampilkan view profile user
     public function show()
     {
+        $title = 'Profile';
         /** @var \App\Models\User $user */
         return view('profile.show', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'title' => $title
         ]);
     }
 
     //fungsi untuk memindahkan user ke halaman edit profile
     public function edit()
     {
+        $title = 'Edit Profile';
         /** @var \App\Models\User $user */
         return view('profile.edit', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'title' => $title
         ]);
     }
 
@@ -40,18 +44,24 @@ class ProfileController extends Controller
             $validated = $request->validate([
                 'nama' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
-                // 'avatar' => ['nullable', 'image', 'max:1024'],
+                'avatar' => ['nullable', 'image', 'max:1024'],
                 'no_telp' => ['nullable', 'string', 'max:20'],
             ]);
 
-            // if ($request->hasFile('avatar')) {
-            //     if ($user->avatar && Storage::exists($user->avatar)) {
-            //         Storage::delete($user->avatar);
-            //     }
+            if ($request->hasFile('profile_picture')) {
+                // Hapus file lama jika ada
+                if ($user->profile_picture && file_exists(public_path($user->profile_picture))) {
+                    unlink(public_path($user->profile_picture));
+                }
 
-            //     $path = $request->file('avatar')->store('avatars', 'public');
-            //     $validated['avatar'] = $path;
-            // }
+                // Simpan file baru
+                $file = $request->file('profile_picture');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('images/profiles'), $filename);
+
+                // Update path di database
+                $user->profile_picture = 'images/profiles/' . $filename;
+            }
 
             $updated = $user->update($validated);
 
