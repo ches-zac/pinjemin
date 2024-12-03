@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
             Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.delete'); // Proses hapus
         });
         Route::prefix('/inventory')->group(function () {
-            Route::get('/', [InventoryController::class, 'showInventory'])->name('admin.inventory.show'); // List inventory
+            Route::get('/', [InventoryController::class, 'showForAdmin'])->name('admin.inventory.show'); // List inventory
             Route::get('/add', [InventoryController::class, 'addInventory'])->name('admin.inventory.add'); // Form tambah
             Route::post('/add', [InventoryController::class, 'storeInventory'])->name('admin.inventory.store'); // Proses tambah
             Route::get('/edit/{inventory}', [InventoryController::class, 'editInventory'])->name('admin.inventory.edit'); // Form edit

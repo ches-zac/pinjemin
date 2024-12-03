@@ -33,20 +33,15 @@ class InventoryController extends Controller
         // Ambil data inventory dengan relasi category
         $data = Inventory::with('category')->get();
         $category = Category::all();
-        $title = 'Daftar Inventori';
-
-        // Periksa role pengguna saat ini
-        if (Auth::user()->role === 'admin') {
-            // Jika admin, buka view admin.inventory.show
-            return view('admin.inventory.show', compact('data', 'category', 'title'));
-        }
-
+        $title = 'Kategori : Inventori';
         // Jika user biasa, buka view item
         return view('item', compact('data', 'category', 'title'));
     }
 
-
-
+    public function showForAdmin() {
+        $data = Inventory::with('category')->get();
+        return view('admin.inventory.show', compact('data', 'title'));
+    }
 
     // Menampilkan form untuk menambah barang
     public function addInventory()

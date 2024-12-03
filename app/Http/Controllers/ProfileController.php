@@ -16,7 +16,7 @@ class ProfileController extends Controller
         $title = 'Profile';
         /** @var \App\Models\User $user */
         return view('profile.show', [
-            'user' => Auth::user(),
+            // 'user' => Auth::user(),
             'title' => $title
         ]);
     }
