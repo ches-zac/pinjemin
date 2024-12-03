@@ -1,25 +1,49 @@
-<x-app-layout>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 class="text-2xl font-bold mb-6">Edit Kategori</h1>
+@extends('layouts.app')
 
-        <form action="{{ route('admin.update.category', $category->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="bg-white p-6 shadow rounded-lg">
-                <div class="mb-4">
-                    <label for="nama_kategori" class="block text-sm font-medium text-gray-700">Nama Kategori</label>
-                    <input type="text" id="nama_kategori" name="nama_kategori" value="{{ old('nama_kategori', $category->nama_kategori) }}" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masukkan nama kategori" required>
-                    @error('nama_kategori')
-                        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+@section('content')
+<div class="flex items-center justify-center w-full">
+    <div class="w-1/2 lg:w-1/3 md:w-2/3 sm:w-full bg-white rounded-lg shadow-md overflow-hidden h-[80vh] flex flex-col">
+        <div class="p-8 overflow-y-auto">
+            <h2 class="text-4xl text-center mb-7 font-semibold text-black">Add Category</h2>
+
+            <form action="{{ route('update.profile') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <!-- No -->
+                <div class="mb-6">
+                    <label for="no" class="block mb-2 text-sm font-medium text-black">No</label>
+                    <input type="number" id="no" name="no" value="{{ old('no', $user->nama) }}"
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    @error('no')
+                        <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
 
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 focus:outline-none">
-                        Update
+                <!-- Nama kategori -->
+                <div class="mb-6">
+                    <label for="nama kategori" class="block mb-2 text-sm font-medium text-black">Email</label>
+                    <input type="text" id="email" name="nama kategori" value="{{ old('nama kategori', $user->email) }}"
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" readonly>
+                    @error('email')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="flex justify-between">
+                    <!-- Tombol Kembali -->
+                    <a href="{{ route('show.profile') }}"
+                       class="text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-500 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                        Kembali
+                    </a>
+
+                    <!-- Tombol Simpan -->
+                    <button type="submit"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Simpan Perubahan
                     </button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
