@@ -37,7 +37,8 @@ class InventoryController extends Controller
     // Menampilkan form untuk menambah barang
     public function addInventory()
     {
-        return view('admin.inventory.add');
+        $title = 'add-inventory';
+        return view('admin.inventory.add', compact('title'));
     }
 
     // Menyimpan barang baru
@@ -62,7 +63,8 @@ class InventoryController extends Controller
     // Menampilkan form untuk mengedit barang
     public function editInventory(Inventory $inventory)
     {
-        return view('admin.inventory.edit', compact('inventory'));
+        $title = 'form-inventory';
+        return view('admin.inventory.edit', compact('inventory', 'title'));
     }
 
     // Memperbarui barang

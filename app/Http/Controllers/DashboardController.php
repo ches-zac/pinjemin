@@ -21,6 +21,7 @@ class DashboardController extends Controller
     }
 
     public function faq() {
+        $title = 'faq';
         $faqs = [
             [
                 'question' => 'Apa itu website PINJEMIN?',
@@ -35,6 +36,6 @@ class DashboardController extends Controller
                 'answer' => 'Barang yang bisa dipinjam meliputi alat tulis, elektronik, dan kebutuhan belajar lainnya.'
             ],
         ];
-        return view('faq', compact('faqs'));
+        return view('faq', compact('faqs', 'title'));
     }
 }

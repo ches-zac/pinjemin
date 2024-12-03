@@ -13,7 +13,8 @@ use Maatwebsite\Excel\Facades\Excel;
 class LendingController extends Controller
 {
     public function lendForm(Inventory $item){
-        return view('lending-per-item', compact('item'));
+        $title = 'lending per item';
+        return view('lending-per-item', compact('item', 'title'));
     }
 
     // fungsi untuk user meminjam barang
