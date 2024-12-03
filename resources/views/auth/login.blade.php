@@ -34,11 +34,16 @@
             <form class="space-y-4" method="POST" action="{{ route('login.submit') }}">
                 @csrf
                 <!-- email -->
-                <div class="flex items-center border rounded-lg p-2">
-                    <input type="text" placeholder="Email" class="mr-2 w-full border-none focus:ring-0" mr-2 name="email">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 1c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"/>
-                    </svg>
+                <div class="flex flex-col">
+                    <div class="flex items-center border rounded-lg p-2">
+                        <input type="text" placeholder="Email" class="w-full border-none focus:ring-0 mr-2" name="email" value="{{ old('email') }}" required>
+                        <svg xmlns="http://www.w3.org/200/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 1c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"/>
+                        </svg>
+                    </div>
+                    @error('email')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
                 <!-- Password -->
                 <div class="flex items-center border rounded-lg p-2">

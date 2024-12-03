@@ -22,18 +22,22 @@
                     <th class="border border-gray-200 py-2">No</th>
                     <th class="border border-gray-200 py-2">Nama</th>
                     <th class="border border-gray-200 py-2">Barang</th>
-                    <th class="border border-gray-200 py-2">Tanggal</th>
-                    <th class="border border-gray-200 py-2">jam</th>
+                    <th class="border border-gray-200 py-2">Tanggal Pinjam</th>
+                    <th class="border border-gray-200 py-2">Jam</th>
+                    <th class="border border-gray-200 py-2">Tanggal Pengembalian</th>
+                    <th class="border border-gray-200 py-2">Status</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($lendings as $lending)
                     <tr>
+                        <td class="border border-gray-200 py-2 text-center">{{ $index+1 }}</td>
                         <td class="border border-gray-200 py-2 text-center">{{ $lending->user->nama }}</td>
                         <td class="border border-gray-200 py-2 text-center">{{ $lending->inventory->nama_barang }}</td>
-                        <td class="border border-gray-200 py-2 text-center">{{ $lending->ruangan }}</td>
-                        <td class="border border-gray-200 py-2 text-center">{{ $lending->status }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->tanggal_peminjaman }}</td>
                         <td class="border border-gray-200 py-2 text-center">{{ $lending->jam }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->tanggal_pengembalian }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->status }}</td>
                     </tr>
                 @empty
                     <tr>
