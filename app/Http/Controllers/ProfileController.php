@@ -48,14 +48,20 @@ class ProfileController extends Controller
                 'no_telp' => ['nullable', 'string', 'max:20'],
             ]);
 
-            // if ($request->hasFile('avatar')) {
-            //     if ($user->avatar && Storage::exists($user->avatar)) {
-            //         Storage::delete($user->avatar);
-            //     }
+            if ($request->hasFile('profile_picture')) {
+                // Hapus file lama jika ada
+                if ($user->profile_picture && file_exists(public_path($user->profile_picture))) {
+                    unlink(public_path($user->profile_picture));
+                }
 
-            //     $path = $request->file('avatar')->store('avatars', 'public');
-            //     $validated['avatar'] = $path;
-            // }
+                // Simpan file baru
+                $file = $request->file('profile_picture');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('images/profiles'), $filename);
+
+                // Update path di database
+                $user->profile_picture = 'images/profiles/' . $filename;
+            }
 
             $updated = $user->update($validated);
 

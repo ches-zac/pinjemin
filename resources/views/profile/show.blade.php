@@ -6,7 +6,9 @@
     <div class="flex items-center space-x-8">
         <!-- Profile Picture -->
         <div class="w-20 h-20 bg-sky-300 rounded-full overflow-hidden ml-5">
-            <img id="profile-picture" src="{{ asset('images/default-profile.jpg') }}" alt="Profile Picture" class="w-full h-full object-cover">
+            <img src="{{ $user->profile_picture ? asset($user->profile_picture) : asset('images/default-profile.jpg') }}"
+            alt="Profile Picture"
+            class="w-full h-full object-cover">
         </div>
         <!-- Profile Info -->
         <div>
