@@ -39,7 +39,7 @@ class InventoryController extends Controller
     }
 
     public function showForAdmin() {
-        $data = Inventory::with('category')->get()->paginate();
+        $data = Inventory::with('category')->paginate(5);
         $title = 'Data Inventori';
         return view('admin.inventory.show', compact('data', 'title'));
     }

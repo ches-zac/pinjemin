@@ -1,7 +1,7 @@
 <!-- Sidebar -->
-<div id="sidebar" class="bg-blue-400 w-16 transition-all duration-300 flex flex-col items-center py-6 overflow-hidden min-h-screen fixed shadow-lg">
+<div id="sidebar" class="bg-teal-400 w-16 transition-all duration-300 flex flex-col items-center py-6 overflow-hidden min-h-screen fixed shadow-lg">
     <!-- Toggle Button -->
-    <button onclick="toggleSidebar()" class="text-black mb-6">
+    <button id="toggleBtn" class="text-black mb-6">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>

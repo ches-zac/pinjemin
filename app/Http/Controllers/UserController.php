@@ -8,7 +8,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function show() {
-        $users = User::all();
+        $users = User::paginate(5);
         $title = 'Daftar User';
         return view('admin.users_manage.show', compact('users', 'title'));
     }
@@ -19,15 +19,12 @@ class UserController extends Controller
         return view('admin.users_manage.edit', compact('user', 'title'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
         // Validasi input
         $validatedData = $request->validate([
             'role' => 'required|in:user,admin', // Hanya menerima nilai 'user' atau 'admin'
         ]);
-
-        // Ambil user berdasarkan ID yang dikirimkan
-        $user = User::findOrFail($request->user_id); // Pastikan `user_id` dikirim dari form
 
         // Perbarui role user
         $user->role = $validatedData['role'];

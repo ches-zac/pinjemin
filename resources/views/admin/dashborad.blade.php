@@ -1,86 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-<!-- Content -->
-        <div class="bg-white flex-1 p-8">
-        
-            <table class="table-auto w-full border border-gray-200">
-                <thead>
-                    <tr class="bg-teal-300">
-                        <th class="border border-gray-200 py-2">Nama</th>
-                        <th class="border border-gray-200 py-2">Barang</th>
-                        <th class="border border-gray-200 py-2">Ruangan</th>
-                        <th class="border border-gray-200 py-2">Pengembalian</th>
-                        <th class="border border-gray-200 py-2">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{-- @foreach ($lendings as $lending)
-                        <tr>
-                            <td class="border border-gray-200 py-2">{{ $lending->user->nama }}</td>
-                            <td class="border border-gray-200 py-2">{{ $lending->inventory->nama_barang }}</td>
-                            <td class="border border-gray-200 py-2">{{ $lending->ruangan }}</td>
-                            <td class="border border-gray-200 py-2">{{ $lending->tanggal_pengembalian ? $lending->tanggal_pengembalian->format('d/m/Y') : 'Belum Kembali' }}</td>
-                            <td class="border border-gray-200 py-2 text-center">
-                                @if ($lending->tanggal_pengembalian)
-                                    <button class="text-black font-bold py-2 px-4 rounded">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
-                                            </svg>
-                                    </button>
-                                @else
-                                    <button class="text-black font-bold py-2 px-4 rounded">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach --}}
+    <!-- Content -->
+    <div class="bg-white flex-1 p-8">
+        <table class="table-auto w-full border border-gray-200">
+            <thead>
+                <tr class="bg-teal-300">
+                    <th class="border border-gray-200 py-2">Nama Peminjam</th>
+                    <th class="border border-gray-200 py-2">Barang</th>
+                    <th class="border border-gray-200 py-2">Ruangan</th>
+                    <th class="border border-gray-200 py-2">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($lendings as $lending)
                     <tr>
-                        <td class="border border-gray-200 py-2 text-center">Data 5</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 6</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 7</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 8</td>
-                        <td class="border border-gray-200 py-2 text-center">
-                            <button class="text-black font-bold py-2 px-4 rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
-                                  </svg>
-                        </td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->user->nama }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->inventory->nama_barang }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->ruangan }}</td>
+                        <td class="border border-gray-200 py-2 text-center">{{ $lending->status }}</td>
                     </tr>
+                @empty
                     <tr>
-                        <td class="border border-gray-200 py-2 text-center">Data 5</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 6</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 7</td>
-                        <td class="border border-gray-200 py-2 text-center">Data 8</td>
-                        <td class="border border-gray-200 py-2 text-center">
-                            <button class="text-black font-bold py-2 px-4 rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
-                                  </svg>
-                            </button>
-                        </td>
+                        <td colspan="4" class="border border-gray-200 py-2 text-center">{{ "Data Tidak Tersedia" }}</td>
                     </tr>
-                </tbody>
-            </table>
-            {{-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-                + TAMBAH PENGGUNA
-            </button> --}}
-        </div>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-
-    <div class = "mt-4">
-           {{ $lendings -> links() }}
-
-</div>
-
+    <div class="mt-4">
+        {{ $lendings->links() }}
+    </div>
 @endsection
 
+
 {{-- <script>
+    ini gatau button apa
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
+    </svg>
+
+
         // Fungsi untuk mengambil data pengguna dari backend
         async function fetchData() {
         try {

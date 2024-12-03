@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="flex items-center justify-center w-full">
-    <div class="w-1/2 lg:w-1/3 md:w-2/3 sm:w-full bg-white rounded-lg shadow-md overflow-hidden h-[80vh] flex flex-col">
+    <div class="w-64 lg:w-1/3 md:w-2/3 sm:w-full bg-white rounded-lg shadow-md overflow-hidden h-[80vh] flex flex-col">
         <div class="p-8 overflow-y-auto">
+            {{-- {{ $title }} --}}
             <h2 class="text-4xl text-center mb-7 font-semibold text-black">{{ "Edit Role User : " . $user->nama }} </h2>
-
-            <form action="{{ route('update.users') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('update.users', $user) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <!-- Role -->
@@ -24,7 +24,7 @@
 
                 <div class="flex justify-between">
                     <!-- Tombol Kembali -->
-                    <a href="{{ route('show.profile') }}"
+                    <a href="{{ route('show.users') }}"
                        class="text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-500 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                         Kembali
                     </a>

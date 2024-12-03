@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'goToUserDashboard'])->name('dashboard');
     Route::prefix('/profile')->group(function () {
         Route::get('/', [ProfileController::class, 'show'])->name('show.profile');
@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
         Route::prefix('/users')->group(function () {
             Route::get('/show', [UserController::class, 'show'])->name('show.users');
             Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit.user');
-            Route::post('/edit/{user}', [UserController::class, 'update'])->name('update.user');
-            Route::delete('/delete/{user}', [UserController::class, 'update'])->name('update.user');
+            Route::put('/edit/{user}', [UserController::class, 'update'])->name('update.users');
+            Route::delete('/delete/{user}', [UserController::class, 'delete'])->name('delete.user');
         });
         Route::get('/dashboard', [DashboardController::class, 'goToAdminDashboard'])->name('admin.dashboard');
         Route::prefix('/categories')->group(function () {
