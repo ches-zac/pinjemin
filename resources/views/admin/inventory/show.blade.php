@@ -3,12 +3,6 @@
 @section('content')
         <!-- Content -->
         <div class="bg-white flex-1 p-8">
-            <div class="flex space-x-2 p-2 mb-4">
-                <label for="start-date" class="text-sm-3">Dari:</label>
-                <input type="date" id="start-date" class="mx-2 w-24">
-                <label for="end-date" class="text-sm-3">Sampai:</label>
-                <input type="date" id="end-date" class="mx-2 w-24">
-              </div>
             <table class="table-auto w-full border border-gray-200">
                 <thead>
                     <tr class="bg-teal-300">
@@ -36,17 +30,11 @@
                     </tr>
                 </tbody>
             </table>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded mt-4 flex items-center gap-x-2"">
-                Unduh Laporan
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-            </button>
         </div>
     </div>
 @endsection
 
-{{-- 
+{{--
     <script>
         // Fungsi untuk mengambil data pengguna dari backend
         async function fetchData() {

@@ -26,7 +26,6 @@ class InventoryController extends Controller
         ]);
     }
 
-
     // Menampilkan semua barang
     public function showInventory()
     {

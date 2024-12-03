@@ -1,7 +1,7 @@
 <x-app-layout>
 <h2 class="text-4xl text-center mb-7 font-semibold text-black">Edit Profil</h2>
 
-<form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('update.profile') }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
