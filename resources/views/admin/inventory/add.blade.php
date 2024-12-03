@@ -8,7 +8,7 @@
 
             <form action="{{ route('update.profile') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+                
 
                 <!-- No -->
                 <div class="mb-6">
