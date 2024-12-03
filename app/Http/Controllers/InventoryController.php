@@ -31,7 +31,7 @@ class InventoryController extends Controller
     public function showInventory()
     {
         // Ambil data inventory dengan relasi category
-        $data = Inventory::with('category')->get();
+        $data = Inventory::with(['category', 'lendings.user'])->paginate(5);
         $category = Category::all();
         $title = 'Kategori : Inventori';
         // Jika user biasa, buka view item
@@ -39,7 +39,7 @@ class InventoryController extends Controller
     }
 
     public function showForAdmin() {
-        $data = Inventory::with('category')->get();
+        $data = Inventory::with('category')->get()->paginate();
         $title = 'Data Inventori';
         return view('admin.inventory.show', compact('data', 'title'));
     }

@@ -52,10 +52,9 @@ class LendingController extends Controller
     //fungsi untuk melihat barang yang sedang dipinjam
     public function myOnGoingLend() {
         // Ambil peminjaman yang sedang berlangsung oleh user yang terautentikasi
-        $ongoingLendings = Lending::where('user_id', Auth::id()) // Ambil berdasarkan user_id yang sedang login
+        $ongoingLendings = Lending::with(['user', 'inventory'])->where('user_id', Auth::id()) // Ambil berdasarkan user_id yang sedang login
                                     ->whereNull('tanggal_pengembalian') // Pastikan tanggal pengembalian null (artinya belum dikembalikan)
-                                    ->get(); // Ambil data peminjaman
-
+                                    ->paginate(5);
         return view('my-ongoing-lending', compact('ongoingLendings')); // Kirim data ke view
     }
 
@@ -88,7 +87,7 @@ class LendingController extends Controller
     {
         // Ambil semua data inventory beserta kategori dan riwayat peminjaman dengan pagination
         $title = "Riwayat Peminjaman";
-        $data = Inventory::with(['category', 'lendings.user'])->paginate(10); // 10 item per halaman
+        $data = Inventory::with(['category', 'lendings.user'])->paginate(5);
         return view('admin.inventory.show', compact('data', 'title'));
     }
 

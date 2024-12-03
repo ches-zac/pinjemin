@@ -49,9 +49,8 @@
         </div>
     </div>
     <div class = "mt-4">
-           {{ $lendings -> links() }}
-
-</div>
+           {{ $data -> links() }}
+    </div>
 @endsection
 
 {{--
