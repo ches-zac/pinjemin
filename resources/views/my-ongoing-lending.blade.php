@@ -11,43 +11,36 @@
                         <th class="border border-gray-200 py-2">Ruangan</th>
                         <th class="border border-gray-200 py-2">Jam</th>
                         <th class="border border-gray-200 py-2 flex item-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                              </svg>
+                            Kembalikan
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($ongoingLending as $item)
+                    @forelse ($ongoingLending as $item)
                         <tr>
                             <td class="border border-gray-200 py-2 text-center">{{ $loop->iteration }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->inventory_id->nama_barang }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->ruangan }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->jam }}</td>
                             <td>
-                                <button class="border border-gray-200 py-2 flex item-center">
+                                <a href="{{ route('lending.return', $item)}}" class="border border-gray-200 py-2 flex item-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
                                     </svg>
-                                </button>
+                                </a>
                             </td>
                         </tr>
-                    @endforeach
-                    {{-- <tr>
-                        <td class="border border-gray-200 py-2 text-center">2</td>
-                        <td class="border border-gray-200 py-2 text-center">Speaker</td>
-                        <td class="border border-gray-200 py-2 text-center">Ruangan 7</td>
-                        <td class="border border-gray-200 py-2 text-center">12.00</td>
-                        <td> <button class="border border-gray-200 py-2 flex item-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                              </svg>
-                            </button>
-                        </td>
-                    </tr> --}}
+                    @empty
+                        <tr>
+                            <td colspan="4" class="border border-gray-200 py-2 text-center">{{ "Data Tidak Tersedia" }}</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
+<div class="mt-4">
+        {{ $ongoingLending->links() }}
+</div>
     </div>
 @endsection
 

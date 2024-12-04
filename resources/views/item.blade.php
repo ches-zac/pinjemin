@@ -1,52 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-        <!-- Content -->
+<div class="container mx-auto px-4 py-8">
+    <!-- Grid Responsif -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($category as $item)
-        <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div class="bg-blue-100 p-4 rounded-lg">
-                <h2 class="text-lg font-bold">{{ $item->nama_kategori }}</h2>
-                <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
-                    @foreach ($data as $itemDetail)
-                        <option value={{ $itemDetail->kuota }}>{{ $itemDetail->nama_barang }} ({{ $itemDetail->kuota }})</option>
-                    @endforeach
-                </select>
-                <div class="mt-2">Kuota: <span id="kuota-proyektor1">{{ $item->category->kuota }}</span></div>
-                <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
-              </div>
-              </div>
-          </div>
+        <div class="bg-blue-100 p-4 rounded-lg">
+            <!-- Nama Kategori -->
+            <h2 class="text-lg font-bold">{{ $item->nama_kategori }}</h2>
+
+            <!-- Dropdown Barang -->
+            <select id="itemSelect-{{ $item->id }}" 
+                class="w-full mt-2 rounded-md border-gray-300"
+                onchange="updateLink('{{ $item->id }}')">
+                <option value="" disabled selected>Pilih Barang</option>
+                @foreach ($item->data as $itemDetail) <!-- Asumsi relasi ke $data ada -->
+                    <option value="{{ $itemDetail->id }}" data-kuota="{{ $itemDetail->kuota }}">
+                        {{ $itemDetail->nama_barang }} ({{ $itemDetail->kuota }})
+                    </option>
+                @endforeach
+            </select>
+
+            <!-- Menampilkan Kuota -->
+            <div class="mt-2">
+                Kuota: <span id="kuota-display-{{ $item->id }}">-</span>
+            </div>
+
+            <!-- Tombol Pinjam -->
+            <a href="#" 
+               id="pinjam-link-{{ $item->id }}" 
+               class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block text-center">
+                Pinjam
+            </a>
+        </div>
         @endforeach
+    </div>
+</div>
 
+<script>
+    // Update link dan kuota berdasarkan pilihan dropdown
+    function updateLink(categoryId) {
+        const selectElement = document.getElementById(`itemSelect-${categoryId}`);
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        const kuota = selectedOption.getAttribute('data-kuota');
+        const itemId = selectedOption.value;
 
-          {{-- <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div class="bg-blue-100 p-4 rounded-lg">
-                <h2 class="text-lg font-bold">Speaker</h2>
-                <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
-                  <option value="10">Speaker A (10 kuota)</option>
-                  <option value="20">Speaker B (20 kuota)</option>
-                </select>
-                <div class="mt-2">Kuota: <span id="kuota-proyektor1">{{ $data->kuota}}</span></div>
-                <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
-              </div>
-              </div>
-          </div>
+        // Update Kuota
+        document.getElementById(`kuota-display-${categoryId}`).textContent = kuota;
 
-          <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div class="bg-blue-100 p-4 rounded-lg">
-                <h2 class="text-lg font-bold">Alat Tulis</h2>
-                <select id="projectSelect1" class="w-full mt-2 rounded-md border-gray-300">
-                  <option value="10">Alat Tulis A (10 kuota)</option>
-                  <option value="20">Alat Tulis B (20 kuota)</option>
-                </select>
-                <div class="mt-2">Kuota: <span id="kuota-proyektor1">10</span></div>
-                <button id="pinjam-proyektor" class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Pinjam</button>
-              </div>
-              </div>
-          </div> --}}
+        // Update Link
+        const link = document.getElementById(`pinjam-link-${categoryId}`);
+        link.href = `{{ route('lending.form', ':id') }}`.replace(':id', itemId);
+    }
+</script>
+@endsection
 @endsection
 
 
