@@ -27,14 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::get('inventory/categories', [InventoryController::class, 'showInventory'])->name('item.categories'); // List kategori
     // Route::get('/inventory/{id}/check', [InventoryController::class, 'checkAvailability'])->name('inventory.check');
     Route::prefix('/lending')->group(function () {
-        Route::get('/lend/{inventory}', [LendingController::class, 'lendform'])->name('lending.form');
-        Route::post('/lend/{inventory}', [LendingController::class, 'lend'])->name('lending');
+        Route::get('/lend/{category}', [LendingController::class, 'lendform'])->name('lending.form');
+        Route::post('/lend', [LendingController::class, 'lend'])->name('lending');
         Route::get('/ongoing', [LendingController::class, 'myOnGoingLend'])->name('lending.ongoing');
-        Route::post('/{inventory}/return', [LendingController::class, 'return'])->name('lending.return');
+        Route::put('/return/{lending}', [LendingController::class, 'return'])->name('lending.return');
     });
     Route::get('/faq', [DashboardController::class, 'faq'])->name('faq');
-
-
 
     // Route untuk admin
     Route::prefix('/admin')->middleware('admin')->group(function () {

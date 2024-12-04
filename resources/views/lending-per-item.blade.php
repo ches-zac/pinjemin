@@ -6,8 +6,23 @@
         <div class="p-8 overflow-y-auto">
             <h2 class="text-4xl text-center mb-7 font-semibold text-black">Tambah Barang</h2>
 
-            <form action="{{ route('lending', $inventory) }}" method="POST">
+            <form action="{{ route('lending') }}" method="POST">
                 @csrf
+                <div class="mb-6">
+                    <label for="inventory_id" class="block mb-2 text-sm font-medium text-black">Barang</label>
+                    <select id="inventory_id" name="inventory_id"
+                        class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-[#dd7c1b]-500 focus:border-[#dd7c1b]-500 block w-full p-2.5" required>
+                        <option value="">-- Pilih Barang --</option>
+                        @foreach ($items as $item)
+                            <option value="{{ $item->id }}">
+                                {{ $item->nama_barang }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('inventory_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
                 <!-- Ruangan -->
                 <div class="mb-6">
                     <label for="ruangan" class="block mb-2 text-sm font-medium text-black">ruangan</label>
@@ -29,7 +44,7 @@
                 <!-- Jam  -->
                 <div class="mb-6">
                     <label for="jam" class="block mb-2 text-sm font-medium text-black">jam</label>
-                    <input type="jam" id="jam" name="jam"
+                    <input type="time" id="jam" name="jam"
                         class="bg-[#dd7c1b] border-white text-white placeholder-white text-sm rounded-lg focus:ring-[#dd7c1b]-500 focus:border-[#dd7c1b]-500 block w-full p-2.5" required>
                     @error('kuota')
                         <span class="text-red-500">{{ $message }}</span>

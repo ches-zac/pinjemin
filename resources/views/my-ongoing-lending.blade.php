@@ -16,18 +16,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($ongoingLending as $item)
+                    @forelse ($ongoingLendings as $item)
                         <tr>
                             <td class="border border-gray-200 py-2 text-center">{{ $loop->iteration }}</td>
-                            <td class="border border-gray-200 py-2 text-center">{{ $item->inventory_id->nama_barang }}</td>
+                            <td class="border border-gray-200 py-2 text-center">{{ $item->inventory->nama_barang }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->ruangan }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->jam }}</td>
                             <td>
-                                <a href="{{ route('lending.return', $item)}}" class="border border-gray-200 py-2 flex item-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                                    </svg>
-                                </a>
+                                <form action="{{ route('lending.return', $item) }}" method="POST" class="border border-gray-200 py-2 flex item-center">
+                                    @csrf
+                                    @method('PUT') <!-- Laravel spoofing untuk metode PUT -->
+                                    <button type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                                        </svg>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @empty
@@ -38,9 +42,9 @@
                 </tbody>
             </table>
         </div>
-<div class="mt-4">
-        {{ $ongoingLending->links() }}
-</div>
+        <div class="mt-4">
+                {{ $ongoingLendings->links() }}
+        </div>
     </div>
 @endsection
 

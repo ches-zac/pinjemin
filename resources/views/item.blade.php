@@ -8,8 +8,7 @@
             <div class="bg-blue-100 p-4 rounded-lg">
                 <!-- Nama Kategori -->
                 <h2 class="text-lg font-bold">{{ $item->nama_kategori }}</h2>
-
-                <!-- Dropdown Barang -->
+                {{-- <!-- Dropdown Barang -->
                 <select id="itemSelect-{{ $item->id }}"
                     class="w-full mt-2 rounded-md border-gray-300"
                     onchange="updateLink('{{ $item->id }}')">
@@ -19,16 +18,16 @@
                             {{ $itemDetail->nama_barang }} ({{ $itemDetail->kuota }})
                         </option>
                     @endforeach
-                </select>
+                </select> --}}
 
                 <!-- Menampilkan Kuota -->
-                <div class="mt-2">
+                {{-- <div class="mt-2">
                     Kuota: <span id="kuota-display-{{ $item->id }}">-</span>
-                </div>
+                </div> --}}
 
                 <!-- Tombol Pinjam -->
-                <a href="#"
-                id="pinjam-link-{{ $item->id }}"
+                <a href="{{ route('lending.form', $item ) }}"
+                {{-- id="pinjam-link-{{ $item->id }}" --}}
                 class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block text-center">
                     Pinjam
                 </a>

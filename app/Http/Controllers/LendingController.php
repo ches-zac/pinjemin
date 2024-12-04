@@ -8,25 +8,30 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\LendingExport;
+use App\Models\Category;
 use Maatwebsite\Excel\Facades\Excel;
 
 class LendingController extends Controller
 {
-    public function lendForm(Inventory $inventory){
+    public function lendForm(Category $category){
+        $items = Inventory::where('category_id', $category->id)->get();
         $title = 'Pinjam Barang';
-        return view('lending-per-item', compact('item', 'title'));
+        return view('lending-per-item', compact('items', 'title'));
     }
 
     // fungsi untuk user meminjam barang
-    public function lend(Request $request, Inventory $inventory)
+    public function lend(Request $request)
     {
+        // Validasi input dari form
         $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
             'inventory_id' => 'required|exists:inventories,id',
             'ruangan' => 'required|string',
             'jam' => 'required|date_format:H:i',
             'tanggal_peminjaman' => 'required|date',
         ]);
+
+        // Ambil data inventory berdasarkan inventory_id
+        $inventory = Inventory::find($validated['inventory_id']);
 
         // Cek ketersediaan barang
         if ($inventory->kuota <= 0) {
@@ -38,7 +43,7 @@ class LendingController extends Controller
 
         // Simpan peminjaman
         Lending::create([
-            'user_id' => $validated['user_id'],
+            'user_id' => Auth::user()->id, // Ambil user_id dari pengguna yang sedang login
             'inventory_id' => $validated['inventory_id'],
             'ruangan' => $validated['ruangan'],
             'jam' => $validated['jam'],
@@ -48,6 +53,38 @@ class LendingController extends Controller
 
         return back()->with('success', 'Peminjaman berhasil.');
     }
+
+    // public function lend(Request $request)
+    // {
+
+    //     $validated = $request->validate([
+    //         // 'user_id' => 'required|exists:users,id',
+    //         'inventory_id' => 'required|exists:inventories,id',
+    //         'ruangan' => 'required|string',
+    //         'jam' => 'required|date_format:H:i',
+    //         'tanggal_peminjaman' => 'required|date',
+    //     ]);
+
+    //     // Cek ketersediaan barang
+    //     if ($inventory->kuota <= 0) {
+    //         return back()->with('error', 'Barang tidak tersedia.');
+    //     }
+
+    //     // Kurangi kuota barang
+    //     $inventory->decrement('kuota');
+
+    //     // Simpan peminjaman
+    //     Lending::create([
+    //         'user_id' => $validated['user_id'],
+    //         'inventory_id' => $validated['inventory_id'],
+    //         'ruangan' => $validated['ruangan'],
+    //         'jam' => $validated['jam'],
+    //         'tanggal_peminjaman' => $validated['tanggal_peminjaman'],
+    //         'status' => 'belum dikembalikan', // Default status
+    //     ]);
+
+    //     return back()->with('success', 'Peminjaman berhasil.');
+    // }
 
     //fungsi untuk melihat barang yang sedang dipinjam
     public function myOnGoingLend() {
@@ -65,18 +102,21 @@ class LendingController extends Controller
     public function return(Lending $lending)
     {
         // Pastikan status peminjaman belum dikembalikan
-        if ($lending->status === 'dikembalikan') {
+        if ($lending->status === 'sudah dikembalikan') {
             return back()->with('error', 'Barang sudah dikembalikan.');
         }
 
+        $bisa = Lending::findOrFail($lending->id);
         // Update status peminjaman
-        $lending->update([
-            'status' => 'dikembalikan',
+        $bisa->update([
+            'status' => 'sudah dikembalikan',
             'tanggal_pengembalian' => now(),
         ]);
 
+        $bisa->save();
+        dd($bisa);
         // Tambahkan kembali kuota barang
-        $inventory = Inventory::findOrFail($lending->inventory_id);
+        $inventory = Inventory::findOrFail($bisa->inventory_id);
         $inventory->increment('kuota');
 
         return back()->with('success', 'Barang berhasil dikembalikan.');

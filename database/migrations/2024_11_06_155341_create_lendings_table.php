@@ -19,7 +19,7 @@ return new class extends Migration
             $table->time('jam');
             $table->date('tanggal_peminjaman');
             $table->datetime('tanggal_pengembalian')->nullable();
-            $table->string('status');
+            $table->string('status')->default('Belum Dikembalikan');
             $table->timestamps();
         });
     }
