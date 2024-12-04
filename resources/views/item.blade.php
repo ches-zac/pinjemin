@@ -4,36 +4,38 @@
 <div class="container mx-auto px-4 py-8">
     <!-- Grid Responsif -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        @foreach ($category as $item)
-        <div class="bg-blue-100 p-4 rounded-lg">
-            <!-- Nama Kategori -->
-            <h2 class="text-lg font-bold">{{ $item->nama_kategori }}</h2>
+        @forelse ($category as $item)
+            <div class="bg-blue-100 p-4 rounded-lg">
+                <!-- Nama Kategori -->
+                <h2 class="text-lg font-bold">{{ $item->nama_kategori }}</h2>
 
-            <!-- Dropdown Barang -->
-            <select id="itemSelect-{{ $item->id }}" 
-                class="w-full mt-2 rounded-md border-gray-300"
-                onchange="updateLink('{{ $item->id }}')">
-                <option value="" disabled selected>Pilih Barang</option>
-                @foreach ($item->data as $itemDetail) <!-- Asumsi relasi ke $data ada -->
-                    <option value="{{ $itemDetail->id }}" data-kuota="{{ $itemDetail->kuota }}">
-                        {{ $itemDetail->nama_barang }} ({{ $itemDetail->kuota }})
-                    </option>
-                @endforeach
-            </select>
+                <!-- Dropdown Barang -->
+                <select id="itemSelect-{{ $item->id }}"
+                    class="w-full mt-2 rounded-md border-gray-300"
+                    onchange="updateLink('{{ $item->id }}')">
+                    <option value="" disabled selected>Pilih Barang</option>
+                    @foreach ($data as $itemDetail) <!-- Asumsi relasi ke $data ada -->
+                        <option value="{{ $itemDetail->id }}" data-kuota="{{ $itemDetail->kuota }}">
+                            {{ $itemDetail->nama_barang }} ({{ $itemDetail->kuota }})
+                        </option>
+                    @endforeach
+                </select>
 
-            <!-- Menampilkan Kuota -->
-            <div class="mt-2">
-                Kuota: <span id="kuota-display-{{ $item->id }}">-</span>
+                <!-- Menampilkan Kuota -->
+                <div class="mt-2">
+                    Kuota: <span id="kuota-display-{{ $item->id }}">-</span>
+                </div>
+
+                <!-- Tombol Pinjam -->
+                <a href="#"
+                id="pinjam-link-{{ $item->id }}"
+                class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block text-center">
+                    Pinjam
+                </a>
             </div>
-
-            <!-- Tombol Pinjam -->
-            <a href="#" 
-               id="pinjam-link-{{ $item->id }}" 
-               class="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block text-center">
-                Pinjam
-            </a>
-        </div>
-        @endforeach
+        @empty
+            <p class="border border-gray-200 py-2 text-center">{{ "Data Tidak Tersedia" }}</p>
+        @endforelse
     </div>
 </div>
 
@@ -53,7 +55,6 @@
         link.href = `{{ route('lending.form', ':id') }}`.replace(':id', itemId);
     }
 </script>
-@endsection
 @endsection
 
 

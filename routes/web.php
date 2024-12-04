@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/edit', [ProfileController::class, 'update'])->name('update.profile'); // Proses edit
     });
     Route::get('inventory/categories', [InventoryController::class, 'showInventory'])->name('item.categories'); // List kategori
-    Route::get('/inventory/{id}/check', [InventoryController::class, 'checkAvailability'])->name('inventory.check');
+    // Route::get('/inventory/{id}/check', [InventoryController::class, 'checkAvailability'])->name('inventory.check');
     Route::prefix('/lending')->group(function () {
         Route::get('/lend/{inventory}', [LendingController::class, 'lendform'])->name('lending.form');
         Route::post('/lend/{inventory}', [LendingController::class, 'lend'])->name('lending');

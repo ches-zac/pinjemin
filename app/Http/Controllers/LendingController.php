@@ -52,7 +52,7 @@ class LendingController extends Controller
     //fungsi untuk melihat barang yang sedang dipinjam
     public function myOnGoingLend() {
         // Ambil peminjaman yang sedang berlangsung oleh user yang terautentikasi
-        $title = 'Peminjaman Saya'
+        $title = 'Peminjaman Saya';
         $ongoingLendings = Lending::with(['user', 'inventory'])->where('user_id', Auth::id()) // Ambil berdasarkan user_id yang sedang login
                                     ->whereNull('tanggal_pengembalian') // Pastikan tanggal pengembalian null (artinya belum dikembalikan)
                                     ->paginate(5);
