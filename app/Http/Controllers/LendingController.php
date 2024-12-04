@@ -106,17 +106,12 @@ class LendingController extends Controller
             return back()->with('error', 'Barang sudah dikembalikan.');
         }
 
-        $bisa = Lending::findOrFail($lending->id);
-        // Update status peminjaman
-        $bisa->update([
-            'status' => 'sudah dikembalikan',
-            'tanggal_pengembalian' => now(),
-        ]);
-
-        $bisa->save();
-        dd($bisa);
+        $lending->status = 'sudah dikembalikan';
+        $lending->tanggal_pengembalian = now();
+        $lending->save();
+        // dd($bisa);
         // Tambahkan kembali kuota barang
-        $inventory = Inventory::findOrFail($bisa->inventory_id);
+        $inventory = Inventory::findOrFail($lending->inventory_id);
         $inventory->increment('kuota');
 
         return back()->with('success', 'Barang berhasil dikembalikan.');
