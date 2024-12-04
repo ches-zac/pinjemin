@@ -16,7 +16,7 @@ class ProfileController extends Controller
         $title = 'Profile';
         /** @var \App\Models\User $user */
         return view('profile.show', [
-            // 'user' => Auth::user(),
+            'user' => Auth::user(),
             'title' => $title
         ]);
     }
@@ -44,7 +44,7 @@ class ProfileController extends Controller
             $validated = $request->validate([
                 'nama' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
-                'avatar' => ['nullable', 'image', 'max:1024'],
+                'profile_picture' => ['nullable', 'image', 'max:1024'],
                 'no_telp' => ['nullable', 'string', 'max:20'],
             ]);
 
