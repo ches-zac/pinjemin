@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($ongoingLending as $item)
+                    @forelse ($ongoingLending as $item)
                         <tr>
                             <td class="border border-gray-200 py-2 text-center">{{ $loop->iteration }}</td>
                             <td class="border border-gray-200 py-2 text-center">{{ $item->inventory_id->nama_barang }}</td>
@@ -30,7 +30,11 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="4" class="border border-gray-200 py-2 text-center">{{ "Data Tidak Tersedia" }}</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
